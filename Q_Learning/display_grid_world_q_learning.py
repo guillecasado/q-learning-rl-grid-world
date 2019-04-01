@@ -1,13 +1,10 @@
-import matplotlib.pyplot as plt
-import environment
-from q_learning_agent import QLearningAgent
-import utils
+from Q_Learning.q_learning_agent import QLearningAgent
+from Q_Learning import utils, environment
 
-if __name__ == "__main__":
+
+def main():
     env = environment.Env()  # Initializing Environment
     display = utils.GraphicDisplay(env)  # Initializing Graphic Display
-    q_learning_agent = QLearningAgent(env.actions)  # Initializing Q-Learning Agent
-    env = environment.Env()  # Initializing Environment
     q_learning_agent = QLearningAgent(env.actions)  # Initializing Q-Learning Agent
     # Run 1000 episodes
     for episode in range(1000):
@@ -24,3 +21,7 @@ if __name__ == "__main__":
                 display.step(action, q_learning_agent.q_values_table)
 
             state = new_state
+
+
+if __name__ == "__main__":
+    main()

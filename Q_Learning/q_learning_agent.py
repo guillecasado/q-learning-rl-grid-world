@@ -4,7 +4,7 @@ import random
 EPSILON = 0.9
 EPSILON_DECAY_RATE = 0.99
 DISCOUNT_FACTOR = 0.9
-LEARNING_RATE = 0.01
+LEARNING_RATE = 0.1
 
 
 class QLearningAgent:
