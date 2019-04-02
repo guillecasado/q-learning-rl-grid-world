@@ -2,7 +2,9 @@ import numpy as np
 import tkinter as tk
 import time
 import matplotlib.pyplot as plt
-from Q_Learning.parameters import (UNIT, COORD_ACTIONS)
+
+UNIT = 50  # pixels per unit
+COORD_ACTIONS = np.array([(-1, 0), (1, 0), (0, -1), (0, 1)])  # up, down, left, right
 
 
 # Grid world real-time display class

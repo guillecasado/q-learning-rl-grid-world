@@ -2,7 +2,7 @@ import numpy as np
 import tkinter as tk
 import time
 import matplotlib.pyplot as plt
-from Q_Learning.parameters import (UNIT, COORD_ACTIONS)
+from Deep_Q_Learning.parameters import (UNIT, COORD_ACTIONS)
 
 
 # Grid world real-time display class
@@ -123,4 +123,3 @@ def plot_episode_solution(epis_n, tsteps):
 # State Normalization
 def normalize(state):
     return [(9-state[0])/9, (9-state[1])/9]
-

@@ -1,18 +1,14 @@
 import numpy as np
-from Q_Learning.parameters import (GRID_WIDTH,
-                                   GRID_HEIGHT,
-                                   ACTIONS,
-                                   COORD_ACTIONS,
-                                   GOAL_STATE,
-                                   GOAL_STATE_REWARD,
-                                   INITIAL_STATE,
-                                   WALL_STATE_REWARD,
-                                   TIME_STEP_REWARD)
-
-WALLS = np.array(
-    [(0, 2), (1, 2), (1, 5), (2, 2), (2, 7), (2, 8), (2, 9), (3, 2), (4, 2), (4, 5), (5, 5), (6, 0),
-     (6, 8), (6, 9), (9, 3)]
-)
+from Deep_Q_Learning.parameters import (GRID_WIDTH,
+                                        GRID_HEIGHT,
+                                        ACTIONS,
+                                        COORD_ACTIONS,
+                                        GOAL_STATE,
+                                        GOAL_STATE_REWARD,
+                                        INITIAL_STATE,
+                                        WALL_STATE_REWARD,
+                                        TIME_STEP_REWARD,
+                                        WALLS)
 
 
 class Env:

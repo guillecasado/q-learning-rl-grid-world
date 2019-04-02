@@ -2,13 +2,13 @@ import numpy as np
 import random
 import tensorflow as tf
 from tensorflow import keras
-from Q_Learning.utils import normalize
-from Q_Learning.parameters import (EPSILON,
-                                   EPSILON_DECAY_RATE,
-                                   DISCOUNT_FACTOR,
-                                   LEARNING_RATE,
-                                   MEMORY_SIZE,
-                                   BATCH_SIZE)
+from Deep_Q_Learning.utils import normalize
+from Deep_Q_Learning.parameters import (EPSILON,
+                                        EPSILON_DECAY_RATE,
+                                        DISCOUNT_FACTOR,
+                                        LEARNING_RATE,
+                                        MEMORY_SIZE,
+                                        BATCH_SIZE)
 
 
 class DeepQLearningAgent:
@@ -86,6 +86,14 @@ class DeepQLearningAgent:
             elif q_value == max_q_value:
                 max_actions_list.append(i)
         return random.choice(max_actions_list)
+
+    def generate_q_table(self):
+        q_values_table = np.zeros([10, 10, 4])
+        for i in range(10):
+            for j in range(10):
+                for a in range(4):
+                    q_values_table[i, j, a] = self.targetModel.predict(np.reshape(normalize([i,j]), [1, 2]))[0][a]
+        return q_values_table
 
 
 class ExperienceReplayMemory:

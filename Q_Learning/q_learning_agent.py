@@ -25,6 +25,8 @@ class QLearningAgent:
         # Updated Q-function
         self.q_values_table[state[0], state[1], action] += self.learning_rate * (new_q - current_q)
 
+        return self.q_values_table
+
     def get_action(self, state):
         self.epsilon *= EPSILON_DECAY_RATE
         if np.random.rand() <= self.epsilon:
