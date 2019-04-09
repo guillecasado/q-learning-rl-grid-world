@@ -78,4 +78,4 @@ def converged_solution_time_steps_evolution():
 
 
 if __name__ == "__main__":
-    q_table_solution()
+    solution_time_steps_evolution()
