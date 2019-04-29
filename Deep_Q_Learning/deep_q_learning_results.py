@@ -1,10 +1,10 @@
 import time
 import matplotlib.pyplot as plt
-from Deep_Q_Learning import deep_environment as environment
-from Deep_Q_Learning.deep_q_learning_agent import DeepQLearningAgent
-from Deep_Q_Learning.deep_q_learning_agent import ExperienceReplayMemory
-import Deep_Q_Learning.utils as utils
-from Deep_Q_Learning.parameters import (N_EXPERIMENTS,
+import deep_environment as environment
+from deep_q_learning_agent import DeepQLearningAgent
+from deep_q_learning_agent import ExperienceReplayMemory
+import utils as utils
+from parameters import (N_EXPERIMENTS,
                                         N_EPISODES_PER_EXPERIMENT,
                                         N_EPISODES_PER_PLOTTING,
                                         UPDATE_ITERATIONS)

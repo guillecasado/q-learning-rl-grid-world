@@ -1,5 +1,5 @@
 import numpy as np
-from Deep_Q_Learning.parameters import (GRID_WIDTH,
+from parameters import (GRID_WIDTH,
                                         GRID_HEIGHT,
                                         ACTIONS,
                                         COORD_ACTIONS,

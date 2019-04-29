@@ -2,7 +2,7 @@ import numpy as np
 import tkinter as tk
 import time
 import matplotlib.pyplot as plt
-from Deep_Q_Learning.parameters import (UNIT, COORD_ACTIONS)
+from parameters import (UNIT, COORD_ACTIONS)
 
 
 # Grid world real-time display class

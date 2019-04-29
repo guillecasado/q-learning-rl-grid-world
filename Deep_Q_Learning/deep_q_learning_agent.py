@@ -2,8 +2,8 @@ import numpy as np
 import random
 import tensorflow as tf
 from tensorflow import keras
-from Deep_Q_Learning.utils import normalize
-from Deep_Q_Learning.parameters import (EPSILON,
+from utils import normalize
+from parameters import (EPSILON,
                                         EPSILON_DECAY_RATE,
                                         DISCOUNT_FACTOR,
                                         LEARNING_RATE,

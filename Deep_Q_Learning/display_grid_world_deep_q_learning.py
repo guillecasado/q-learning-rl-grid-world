@@ -1,8 +1,8 @@
-from Deep_Q_Learning import deep_environment
-from Deep_Q_Learning.deep_q_learning_agent import DeepQLearningAgent
-from Deep_Q_Learning.deep_q_learning_agent import ExperienceReplayMemory
-import Deep_Q_Learning.utils as utils
-from Deep_Q_Learning.parameters import UPDATE_ITERATIONS
+import deep_environment
+from deep_q_learning_agent import DeepQLearningAgent
+from deep_q_learning_agent import ExperienceReplayMemory
+import utils as utils
+from parameters import UPDATE_ITERATIONS
 
 
 def main():
