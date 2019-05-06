@@ -2,7 +2,8 @@ import numpy as np
 import tkinter as tk
 import time
 import matplotlib.pyplot as plt
-from parameters import (UNIT, COORD_ACTIONS)
+from parameters import (UNIT, COORD_ACTIONS, GOAL_STATE, GOAL_STATE_REWARD)
+import pandas as pd
 
 
 # Grid world real-time display class
@@ -101,7 +102,7 @@ class GraphicDisplay(tk.Tk):
         self.update()
 
 
-# Plotting results functions
+# Plotting Results functions
 def plot_converged_solution(exp_n, tsteps):
     plt.grid(True)
     plt.title('Converged solution in number of time-steps')
@@ -120,6 +121,39 @@ def plot_episode_solution(epis_n, tsteps):
     plt.pause(0.001)
 
 
+def plot_line_graphic(data, y_label, title):
+    plt.grid(True)
+    plt.title(title)
+    plt.ylabel(y_label)
+    plt.xlabel('Episode number')
+    plt.plot(data)
+    plt.pause(0.001)
+
+
+def data_mean(data, batch_n):
+    l_means = []
+    for i in range(0, len(data), batch_n):
+        l_means.append(sum(data[i:i+batch_n])/batch_n)
+    return l_means
+
+
+# Storing Data functions
+def create_data_frame(data=None):
+    df = pd.DataFrame()
+    return df
+
+
 # State Normalization
 def normalize(state):
     return [(9-state[0])/9, (9-state[1])/9]
+
+
+# Q_Values have converged
+def q_values_converged(q_table):
+
+    if (abs(q_table[tuple(GOAL_STATE + COORD_ACTIONS[0])][1] - GOAL_STATE_REWARD) < 0.5).all() and \
+            (abs(q_table[tuple(GOAL_STATE + COORD_ACTIONS[1])][0] - GOAL_STATE_REWARD) < 0.5).all() and \
+            (abs(q_table[tuple(GOAL_STATE + COORD_ACTIONS[2])][3] - GOAL_STATE_REWARD) < 0.5).all() and \
+            (abs(q_table[tuple(GOAL_STATE + COORD_ACTIONS[3])][2] - GOAL_STATE_REWARD) < 0.5).all():
+        return True
+    return False

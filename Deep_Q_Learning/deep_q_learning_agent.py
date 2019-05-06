@@ -25,11 +25,9 @@ class DeepQLearningAgent:
 
     def _build_model(self):
         model = keras.Sequential()
-        model.add(keras.layers.Dense(24,
+        model.add(keras.layers.Dense(20,
                                      input_shape=(2,),
-                                     activation=keras.activations.relu))
-        model.add(keras.layers.Dense(24,
-                                     activation=keras.activations.relu))
+                                     activation=keras.activations.sigmoid))
         model.add(keras.layers.Dense(len(self.actions),
                                      activation=keras.activations.linear))
         model.compile(optimizer=tf.train.AdamOptimizer(learning_rate=LEARNING_RATE), loss='mse')
@@ -61,10 +59,13 @@ class DeepQLearningAgent:
             self.policyModel.fit(state, q_values, verbose=0)
 
         # Decay the exploration rate
-        self.epsilon *= EPSILON_DECAY_RATE
+        # self.epsilon *= EPSILON_DECAY_RATE
 
     def update_q_network(self):
         self.targetModel.set_weights(self.policyModel.get_weights())
+
+    def decay_exploration(self):
+        self.epsilon *= EPSILON_DECAY_RATE
 
     def get_action(self, state):
         state = np.reshape(normalize(state), [1, 2])

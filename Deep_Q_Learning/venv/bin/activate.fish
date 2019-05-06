@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/guillecasado/Google_Drive/ERASMUS/Reinforced_Learning/Training/grid-world/venv"
+set -gx VIRTUAL_ENV "/Users/guillecasado/Google_Drive/ERASMUS/Experimentation/Deep_Q_Learning/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
