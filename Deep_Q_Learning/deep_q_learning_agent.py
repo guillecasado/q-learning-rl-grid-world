@@ -28,7 +28,7 @@ class DeepQLearningAgent:
 
     def _build_model(self):
         model = keras.Sequential()
-        model.add(keras.layers.Dense(20,
+        model.add(keras.layers.Dense(50,
                                      input_shape=(OBSERVATION_DIM*OBSERVATION_DIM*2+2,),
                                      activation=keras.activations.sigmoid))
         model.add(keras.layers.Dense(len(self.actions),
