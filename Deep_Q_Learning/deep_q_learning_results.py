@@ -75,14 +75,15 @@ def deep_q_table_solution():
     for episode in range(MAX_EPISODES_EXPERIMENT):
         env.reset_env()  # Running a new Environment
         state = env.initialState
+        observation = env.initialObservation
         terminated = False
         episode_time_steps = 1
         cumulative_reward = 0
         while not terminated:
 
-            action = agent.get_action(state)  # Getting current state action following e-greedy strategy
-            new_state, reward, terminated = env.step(state, action)
-            agent.memory.add_experience((state, action, reward, new_state, terminated))
+            action = agent.get_action(state, observation)  # Getting current state action following e-greedy strategy
+            next_state, next_observation, reward, terminated = env.step(state, action)
+            agent.memory.add_experience((state, action, observation, reward, next_state, next_observation, terminated))
             agent.update_q_function_experience_replay()  # Update Q-function from agent
 
             cumulative_reward += reward
@@ -95,7 +96,8 @@ def deep_q_table_solution():
 
             if episode_time_steps == MAX_TIME_STEPS_EPISODE:
                 terminated = True
-            state = new_state
+            state = next_state
+            observation = next_observation
             episode_time_steps += 1
             experiment_time_steps += 1
 

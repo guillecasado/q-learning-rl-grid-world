@@ -4,11 +4,14 @@ import tensorflow as tf
 from tensorflow import keras
 from utils import normalize
 from parameters import (EPSILON,
-                                        EPSILON_DECAY_RATE,
-                                        DISCOUNT_FACTOR,
-                                        LEARNING_RATE,
-                                        MEMORY_SIZE,
-                                        BATCH_SIZE)
+                        EPSILON_DECAY_RATE,
+                        DISCOUNT_FACTOR,
+                        LEARNING_RATE,
+                        MEMORY_SIZE,
+                        BATCH_SIZE,
+                        OBSERVATION_DIM)
+
+import deep_environment as environment
 
 
 class DeepQLearningAgent:
@@ -26,7 +29,7 @@ class DeepQLearningAgent:
     def _build_model(self):
         model = keras.Sequential()
         model.add(keras.layers.Dense(20,
-                                     input_shape=(2,),
+                                     input_shape=(OBSERVATION_DIM*OBSERVATION_DIM*2+2,),
                                      activation=keras.activations.sigmoid))
         model.add(keras.layers.Dense(len(self.actions),
                                      activation=keras.activations.linear))
@@ -39,16 +42,24 @@ class DeepQLearningAgent:
             return
 
         # Train the Q-Network by experience replay
-        for state, action, reward, next_state, terminated in self.memory.sample():
+        for state, action, observation, reward, next_state, next_observation, terminated in self.memory.sample():
             state = np.reshape(normalize(state), [1, 2])
+            observation = np.reshape(observation, [1, OBSERVATION_DIM * OBSERVATION_DIM * 2])
             next_state = np.reshape(normalize(next_state), [1, 2])
+            next_observation = np.reshape(next_observation, [1, OBSERVATION_DIM * OBSERVATION_DIM * 2])
+            mlp_state = np.reshape(np.concatenate([observation[0], state[0]]),
+                                   [1, OBSERVATION_DIM * OBSERVATION_DIM * 2 + 2])
+            mlp_next_state = np.reshape(
+                np.concatenate([next_observation[0], next_state[0]]), [1, OBSERVATION_DIM * OBSERVATION_DIM * 2 + 2]
+            )
+
             # Current Q-values
-            q_values = self.policyModel.predict(state)
+            q_values = self.policyModel.predict(mlp_state)
 
             # Q-values next step update
             q_update = reward
             if not terminated:
-                q_values_next_state = self.targetModel.predict(next_state)[0]
+                q_values_next_state = self.targetModel.predict(mlp_next_state)[0]
                 max_action_next_state = self.arg_max(q_values_next_state)
                 q_update = reward + self.discount_factor * q_values_next_state[max_action_next_state]
 
@@ -56,7 +67,7 @@ class DeepQLearningAgent:
             q_values[0][action] = q_update
 
             # Updated policy Q-Network
-            self.policyModel.fit(state, q_values, verbose=0)
+            self.policyModel.fit(mlp_state, q_values, verbose=0)
 
         # Decay the exploration rate
         # self.epsilon *= EPSILON_DECAY_RATE
@@ -67,12 +78,15 @@ class DeepQLearningAgent:
     def decay_exploration(self):
         self.epsilon *= EPSILON_DECAY_RATE
 
-    def get_action(self, state):
+    def get_action(self, state, observation):
         state = np.reshape(normalize(state), [1, 2])
+        observation = np.reshape(observation, [1, OBSERVATION_DIM * OBSERVATION_DIM * 2])
+        mlp_state = np.reshape(np.concatenate([observation[0], state[0]]),
+                               [1, OBSERVATION_DIM * OBSERVATION_DIM * 2 + 2])
         if np.random.rand() <= self.epsilon:
             return random.choice(self.actions)
         else:
-            q_values = self.policyModel.predict(state)
+            q_values = self.policyModel.predict(mlp_state)
             return self.arg_max(q_values[0])
 
     @staticmethod
@@ -93,7 +107,19 @@ class DeepQLearningAgent:
         for i in range(10):
             for j in range(10):
                 for a in range(4):
-                    q_values_table[i, j, a] = self.targetModel.predict(np.reshape(normalize([i,j]), [1, 2]))[0][a]
+                    observation = np.zeros([OBSERVATION_DIM, OBSERVATION_DIM, 2])
+                    for i2 in range(-1, 2):
+                        for j2 in range(-1, 2):
+                            if i + i2 == -1 or i + i2 == 10 or j + j2 == -1 or j + j2 == 10:
+                                observation[i2 + 1, j2 + 1] = [1, 0]
+                            else:
+                                env = environment.Env()
+                                observation[i2 + 1, j2 + 1] = env.environment[i + i2, j + j2]
+                    state = np.reshape(normalize([i, j]), [1, 2])
+                    observation = np.reshape(observation, [1, OBSERVATION_DIM * OBSERVATION_DIM * 2])
+                    mlp_state = np.reshape(np.concatenate([observation[0], state[0]]),
+                                           [1, OBSERVATION_DIM * OBSERVATION_DIM * 2 + 2])
+                    q_values_table[i, j, a] = self.targetModel.predict(mlp_state)[0][a]
         return q_values_table
 
 
