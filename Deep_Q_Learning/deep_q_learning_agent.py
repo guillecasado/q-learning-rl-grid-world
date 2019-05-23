@@ -38,6 +38,72 @@ class DeepQLearningAgent:
         return model
 
     def update_q_function_experience_replay(self):
+
+        if len(self.memory) < self.memory.batch_size:
+            return
+
+        mlp_states_array = np.zeros([self.memory.batch_size,
+                                     OBSERVATION_DIM * OBSERVATION_DIM * 2 +
+                                     2])
+        mlp_next_states_array = np.zeros([self.memory.batch_size,
+                                          OBSERVATION_DIM * OBSERVATION_DIM * 2 +
+                                          2])
+
+        inputs = np.zeros([self.memory.batch_size,
+                           OBSERVATION_DIM * OBSERVATION_DIM * 2 +
+                           2])
+        targets = np.zeros([self.memory.batch_size, len(self.actions)])
+
+        mem_samples = self.memory.sample()
+
+        # Train the Q-Network by experience replay
+        for i, sample in enumerate(mem_samples):
+            state, action, obs, reward, next_state, next_obs, terminated = sample
+            state = np.reshape(normalize(state), [1, 2])
+            observation = np.reshape(obs, [1, OBSERVATION_DIM * OBSERVATION_DIM * 2])
+            next_state = np.reshape(normalize(next_state), [1, 2])
+            next_observation = np.reshape(next_obs, [1, OBSERVATION_DIM * OBSERVATION_DIM * 2])
+            mlp_state = np.reshape(np.concatenate([
+                observation[0],
+                state[0]]),
+                [1,
+                 OBSERVATION_DIM * OBSERVATION_DIM * 2 +
+                 len(state[0])])
+            mlp_states_array[i] = mlp_state
+
+            mlp_next_state = np.reshape(np.concatenate([
+                next_observation[0],
+                next_state[0]]),
+                [1,
+                 OBSERVATION_DIM * OBSERVATION_DIM * 2 +
+                 len(state[0])])
+            mlp_next_states_array[i] = mlp_next_state
+
+            inputs[i] = mlp_state
+
+        state_preds = self.policyModel.predict(mlp_states_array)
+        next_state_preds = self.targetModel.predict(mlp_next_states_array)
+
+        for i, (q_values, next_q_values, sample) in enumerate(zip(state_preds, next_state_preds, mem_samples)):
+
+            state, action, obs, reward, next_state, next_obs, terminated = sample
+
+            targets[i] = q_values
+
+            q_update = reward
+            if not terminated:
+                max_action_next_state = self.arg_max(next_q_values)
+                q_update = reward + self.discount_factor * next_q_values[max_action_next_state]
+
+            # New Q-values
+            targets[i][action] = q_update
+        # Updated policy Q-Network
+        self.policyModel.fit(inputs, targets, verbose=0)
+
+        # Decay the exploration rate
+        # self.epsilon *= EPSILON_DECAY_RATE
+
+    """
         if len(self.memory) < self.memory.batch_size:
             return
 
@@ -71,7 +137,7 @@ class DeepQLearningAgent:
 
         # Decay the exploration rate
         # self.epsilon *= EPSILON_DECAY_RATE
-
+    """
     def update_q_network(self):
         self.targetModel.set_weights(self.policyModel.get_weights())
 

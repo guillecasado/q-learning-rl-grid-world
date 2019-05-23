@@ -105,7 +105,7 @@ def deep_q_table_solution():
             print(episode_time_steps)
             utils.plot_episode_solution(episode, episode_time_steps)
         # Decay exploration and update Q-target network
-        if episode > 100:
+        if episode > 20:
             agent.decay_exploration()
 
         # Save Data
@@ -119,8 +119,8 @@ def deep_q_table_solution():
         q_table = agent.generate_q_table()
         display.step(1, q_table)
         np.save('q_table', q_table)
-        if utils.q_values_converged(q_table):
-            break
+        #if utils.q_values_converged(q_table):
+            #break
 
     # Showing results
     q_table = agent.generate_q_table()
