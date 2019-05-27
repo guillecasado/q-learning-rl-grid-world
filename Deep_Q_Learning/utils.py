@@ -2,7 +2,12 @@ import numpy as np
 import tkinter as tk
 import time
 import matplotlib.pyplot as plt
-from parameters import (UNIT, COORD_ACTIONS, GOAL_STATE, GOAL_STATE_REWARD)
+from parameters import (UNIT,
+                        COORD_ACTIONS,
+                        GOAL_STATE,
+                        GOAL_STATE_REWARD,
+                        GRID_HEIGHT,
+                        GRID_WIDTH)
 import pandas as pd
 
 
@@ -145,7 +150,7 @@ def create_data_frame(data=None):
 
 # State Normalization
 def normalize(state):
-    return [(9-state[0])/9, (9-state[1])/9]
+    return [state[0]/(GRID_HEIGHT-1), state[1]/(GRID_WIDTH-1)]
 
 
 # Q_Values have converged

@@ -10,7 +10,9 @@ from parameters import (N_EXPERIMENTS,
                         MAX_EPISODES_EXPERIMENT,
                         N_EPISODES_PER_PLOTTING,
                         UPDATE_ITERATIONS,
-                        N_BATCH_MEANS)
+                        N_BATCH_MEANS,
+                        N_RANDOM_EPISODES,
+                        EPSILON_MIN)
 
 
 def solution_time_steps_evolution():
@@ -76,14 +78,15 @@ def deep_q_table_solution():
         env.reset_env()  # Running a new Environment
         state = env.initialState
         observation = env.initialObservation
+        pieces = env.piecesPicked
         terminated = False
         episode_time_steps = 1
         cumulative_reward = 0
         while not terminated:
 
-            action = agent.get_action(state, observation)  # Getting current state action following e-greedy strategy
-            next_state, next_observation, reward, terminated = env.step(state, action)
-            agent.memory.add_experience((state, action, observation, reward, next_state, next_observation, terminated))
+            action = agent.get_action(state, observation, pieces)  # Getting current state action following e-greedy strategy
+            next_state, next_observation, next_pieces, reward, terminated = env.step(state, action)
+            agent.memory.add_experience((state, action, observation, pieces, reward, next_state, next_observation, next_pieces, terminated))
             agent.update_q_function_experience_replay()  # Update Q-function from agent
 
             cumulative_reward += reward
@@ -98,14 +101,19 @@ def deep_q_table_solution():
                 terminated = True
             state = next_state
             observation = next_observation
+            pieces = next_pieces
             episode_time_steps += 1
             experiment_time_steps += 1
 
         if episode % N_EPISODES_PER_PLOTTING == 0:  # Plot solution each N_EPISODES_PER_PLOTTING episodes
             print(episode_time_steps)
+            plt.figure(1)
             utils.plot_episode_solution(episode, episode_time_steps)
+            plt.figure(2)
+            utils.plot_episode_solution(episode, cumulative_reward)
+
         # Decay exploration and update Q-target network
-        if episode > 20:
+        if episode > N_RANDOM_EPISODES and agent.epsilon > EPSILON_MIN:
             agent.decay_exploration()
 
         # Save Data
@@ -125,13 +133,14 @@ def deep_q_table_solution():
     # Showing results
     q_table = agent.generate_q_table()
     display.step(1, q_table)
-    f2 = plt.figure(2)
-    utils.plot_line_graphic(episode_epsilons, 'Episode epsilon', 'Exploration')
-    f2.show()
-    f3 = plt.figure(3)
+    plt.figure(2)
+    plt.close()
+    plt.figure(2)
     l_means = utils.data_mean(episode_rewards, N_BATCH_MEANS)
     utils.plot_line_graphic(l_means, 'Episode cumulative reward', 'Reward')
-    f3.show()
+    plt.figure(3)
+    utils.plot_line_graphic(episode_epsilons, 'Episode epsilon', 'Exploration')
+
     input()
 
     # Saving Variables
