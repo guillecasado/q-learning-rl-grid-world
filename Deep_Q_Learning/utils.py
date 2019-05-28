@@ -113,7 +113,7 @@ def plot_converged_solution(exp_n, tsteps):
     plt.title('Converged solution in number of time-steps')
     plt.ylabel('Time-steps')
     plt.xlabel('Experiment number')
-    plt.plot(exp_n, tsteps, 'bo')
+    plt.plot(exp_n, tsteps, 'b.')
     plt.pause(0.001)
 
 
@@ -122,7 +122,7 @@ def plot_episode_solution(epis_n, tsteps):
     plt.title('Convergence')
     plt.ylabel('Time-steps')
     plt.xlabel('Episode number')
-    plt.plot(epis_n, tsteps, 'bo')
+    plt.plot(epis_n, tsteps, 'b.')
     plt.pause(0.001)
 
 

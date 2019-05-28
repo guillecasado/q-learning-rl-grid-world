@@ -2,6 +2,8 @@ import deep_environment
 from deep_q_learning_agent import DeepQLearningAgent
 from deep_q_learning_agent import ExperienceReplayMemory
 import utils as utils
+import numpy as np
+import time
 from parameters import UPDATE_ITERATIONS
 
 
@@ -31,5 +33,47 @@ def main():
         agent.update_q_network()
 
 
+def test():
+    env = deep_environment.Env()  # Initializing Environment
+    memory = ExperienceReplayMemory()
+    agent = DeepQLearningAgent(env.actions, memory)  # Initializing Q-Learning Agent
+    weights = np.load('mlp_weights.npy', allow_pickle=True)
+    agent.targetModel.set_weights(weights)
+
+    # Display Q-Table
+    display1 = utils.GraphicDisplay(env)  # Initializing Graphic Display
+    q_table = agent.generate_q_table([0, 0, 0])
+    display1.step(1, q_table)
+    display2 = utils.GraphicDisplay(env)  # Initializing Graphic Display
+    q_table = agent.generate_q_table([0, 0, 1])
+    display2.step(1, q_table)
+    display3 = utils.GraphicDisplay(env)  # Initializing Graphic Display
+    q_table = agent.generate_q_table([1, 0, 1])
+    display3.step(1, q_table)
+    display4 = utils.GraphicDisplay(env)  # Initializing Graphic Display
+    q_table = agent.generate_q_table([1, 1, 1])
+    display4.step(1, q_table)
+
+    # Run 1000 episodes
+    for episode in range(1000):
+        env.reset_env()  # Running a new Environment
+        state = env.initialState
+        observation = env.initialObservation
+        pieces = env.piecesPicked
+        terminated = False
+        display1.reset_display()
+        while not terminated:
+            action = agent.get_action_test(state, observation, pieces)  # Getting current state action following e-greedy strategy
+            next_state, next_observation, next_pieces, reward, terminated = env.step(state, action)
+            if not (state == next_state).all():
+                display1.step(action)
+
+            state = next_state
+            observation = next_observation
+            pieces = next_pieces
+
+            time.sleep(0.1)
+
+
 if __name__ == "__main__":
-    main()
+    test()

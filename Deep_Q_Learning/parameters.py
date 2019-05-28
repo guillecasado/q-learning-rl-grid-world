@@ -2,44 +2,48 @@ import numpy as np
 
 # Epsilon-greedy Policy Evaluation Parameters
 EPSILON = 1
-EPSILON_DECAY_RATE = 0.98
-EPSILON_MIN = 0.2
-N_RANDOM_EPISODES = 0
+EPSILON_DECAY_RATE = 0.99
+EPSILON_MIN = 0.01
+N_RANDOM_EPISODES = 200
+EPSILON_TEST = 0.1
 
 
 # Deep Q-Learning Algorithm Parameters
-DISCOUNT_FACTOR = 0.98
+DISCOUNT_FACTOR = 0.9
+
 LEARNING_RATE = 0.01
+LEARNING_RATE_DECAY = 1
+LEARNING_RATE_MIN = 0.01
 
 # Experience Replay Memory Parameters
 MEMORY_SIZE = 1000
-BATCH_SIZE = 10
+BATCH_SIZE = 50
 
 MAX_EPISODES_EXPERIMENT = 1000
 MAX_TIME_STEPS_EPISODE = 1000
 N_EPISODES_PER_PLOTTING = 1
 N_EXPERIMENTS = 20
-N_BATCH_MEANS = 10
+N_BATCH_MEANS = 20
 
 # Fixed Q-Network Strategy parameters
 UPDATE_ITERATIONS = 1
 
 UNIT = 50  # pixels per unit
-GRID_HEIGHT = 7
-GRID_WIDTH = 7
+GRID_HEIGHT = 5
+GRID_WIDTH = 5
 ACTIONS = np.array([0, 1, 2, 3])  # up, down, left, right
 COORD_ACTIONS = np.array([(-1, 0), (1, 0), (0, -1), (0, 1)])  # up, down, left, right
 GOAL_STATE_REWARD = 100
-WALL_STATE_REWARD = 0
-PIECE_REWARD = 50
-TIME_STEP_REWARD = -0.1
-INITIAL_STATE = [6, 1]
-GOAL_STATE = [1, 6]
+WALL_STATE_REWARD = -10
+PIECE_REWARD = 100
+TIME_STEP_REWARD = -1
+INITIAL_STATE = [2, 2]
+GOAL_STATE = [4, 4]
 WALLS = np.array(
     []
 )
 PIECES = np.array(
-    [(2, 1), (5, 5)]
+    [(0, 0), (4, 0), (0, 4)]
 )
 
 OBSERVATION_DIM = 3

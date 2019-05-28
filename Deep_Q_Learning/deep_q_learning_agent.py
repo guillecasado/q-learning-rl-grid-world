@@ -5,6 +5,7 @@ from tensorflow import keras
 from utils import normalize
 from parameters import (EPSILON,
                         EPSILON_DECAY_RATE,
+                        EPSILON_TEST,
                         DISCOUNT_FACTOR,
                         LEARNING_RATE,
                         MEMORY_SIZE,
@@ -12,7 +13,8 @@ from parameters import (EPSILON,
                         OBSERVATION_DIM,
                         PIECES,
                         GRID_HEIGHT,
-                        GRID_WIDTH)
+                        GRID_WIDTH,
+                        LEARNING_RATE_DECAY)
 
 import deep_environment as environment
 
@@ -31,7 +33,7 @@ class DeepQLearningAgent:
 
     def _build_model(self):
         model = keras.Sequential()
-        model.add(keras.layers.Dense(100,
+        model.add(keras.layers.Dense(50,
                                      input_shape=(
                                          OBSERVATION_DIM*OBSERVATION_DIM * 3 +
                                          len(PIECES) +
@@ -118,46 +120,14 @@ class DeepQLearningAgent:
         # Decay the exploration rate
         # self.epsilon *= EPSILON_DECAY_RATE
 
-    """
-        if len(self.memory) < self.memory.batch_size:
-            return
-
-        # Train the Q-Network by experience replay
-        for state, action, observation, reward, next_state, next_observation, terminated in self.memory.sample():
-            state = np.reshape(normalize(state), [1, 2])
-            observation = np.reshape(observation, [1, OBSERVATION_DIM * OBSERVATION_DIM * 2])
-            next_state = np.reshape(normalize(next_state), [1, 2])
-            next_observation = np.reshape(next_observation, [1, OBSERVATION_DIM * OBSERVATION_DIM * 2])
-            mlp_state = np.reshape(np.concatenate([observation[0], state[0]]),
-                                   [1, OBSERVATION_DIM * OBSERVATION_DIM * 2 + 2])
-            mlp_next_state = np.reshape(
-                np.concatenate([next_observation[0], next_state[0]]), [1, OBSERVATION_DIM * OBSERVATION_DIM * 2 + 2]
-            )
-
-            # Current Q-values
-            q_values = self.policyModel.predict(mlp_state)
-
-            # Q-values next step update
-            q_update = reward
-            if not terminated:
-                q_values_next_state = self.targetModel.predict(mlp_next_state)[0]
-                max_action_next_state = self.arg_max(q_values_next_state)
-                q_update = reward + self.discount_factor * q_values_next_state[max_action_next_state]
-
-            # New Q-values
-            q_values[0][action] = q_update
-
-            # Updated policy Q-Network
-            self.policyModel.fit(mlp_state, q_values, verbose=0)
-
-        # Decay the exploration rate
-        # self.epsilon *= EPSILON_DECAY_RATE
-    """
     def update_q_network(self):
         self.targetModel.set_weights(self.policyModel.get_weights())
 
     def decay_exploration(self):
         self.epsilon *= EPSILON_DECAY_RATE
+
+    def decay_learning_rate(self):
+        self.learning_rate *= LEARNING_RATE_DECAY
 
     def get_action(self, state, observation, pieces):
         state = np.reshape(normalize(state), [1, 2])
@@ -178,6 +148,25 @@ class DeepQLearningAgent:
             q_values = self.policyModel.predict(mlp_state)
             return self.arg_max(q_values[0])
 
+    def get_action_test(self, state, observation, pieces):
+        state = np.reshape(normalize(state), [1, 2])
+        observation = np.reshape(observation, [1, OBSERVATION_DIM * OBSERVATION_DIM * 3])
+        pieces = np.reshape(pieces, [1, len(PIECES)])
+
+        mlp_state = np.reshape(np.concatenate([
+            pieces[0],
+            observation[0],
+            state[0]]),
+            [1,
+             OBSERVATION_DIM * OBSERVATION_DIM * 3 +
+             len(PIECES) +
+             2])
+        if np.random.rand() <= EPSILON_TEST:
+            return random.choice(self.actions)
+        else:
+            q_values = self.targetModel.predict(mlp_state)
+            return self.arg_max(q_values[0])
+
     @staticmethod
     def arg_max(state_q_values):
         max_actions_list = []
@@ -191,10 +180,12 @@ class DeepQLearningAgent:
                 max_actions_list.append(i)
         return random.choice(max_actions_list)
 
-    def generate_q_table(self):
+    def generate_q_table(self, pieces_picked=None):
         q_values_table = np.zeros([GRID_HEIGHT, GRID_WIDTH, 4])
         env = environment.Env()
         pieces = env.piecesPicked
+        if not(pieces_picked is None):
+            pieces = pieces_picked
         for i in range(GRID_HEIGHT):
             for j in range(GRID_WIDTH):
                 for a in range(4):

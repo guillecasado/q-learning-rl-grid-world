@@ -60,30 +60,33 @@ class Env:
 
     def step(self, state, action):
         terminated = False
-        next_state, next_observation = self.move(state, action)
-        reward = TIME_STEP_REWARD
+        next_state, next_observation, piece_picked = self.move(state, action)
 
         if np.array_equal(next_state, state):
-            reward += WALL_STATE_REWARD
+            reward = WALL_STATE_REWARD
 
         elif np.array_equal(next_state, self.goalState):
-            reward += GOAL_STATE_REWARD
+            if sum(self.piecesPicked) == 0:
+                reward = -GOAL_STATE_REWARD
+            else:
+                reward = GOAL_STATE_REWARD*(sum(self.piecesPicked))
             terminated = True
 
-        elif next_state in self.pieces:
+        elif piece_picked:
             for i, piece in enumerate(self.pieces):
                 if np.array_equal(next_state, piece) and self.piecesPicked[i] == 0:
-                    reward += PIECE_REWARD
+                    reward = PIECE_REWARD
                     self.piecesPicked[i] = 1
                     self.environment[next_state[0], next_state[1]] = [0, 0, 0]
         else:
-            reward += self.reward[tuple(next_state)]
+            reward = TIME_STEP_REWARD
 
         return next_state, next_observation, self.piecesPicked, reward, terminated
 
     def move(self, state, action):
         next_state = state + self.coordActions[action]
         next_observation = np.zeros([OBSERVATION_DIM, OBSERVATION_DIM, 3])
+        piece_picked = False
         if (sum([np.array_equal(next_state, wall) for wall in self.walls]) != 0) \
                 or not (0 <= next_state[0] < self.height and 0 <= next_state[1] < self.width):
             next_state = state
@@ -96,8 +99,10 @@ class Env:
                 else:
                     next_observation[i + 1, j + 1] = self.environment[next_state[0] + i, next_state[1] + j]
         
-        if next_state in self.pieces:
-            next_observation[OBSERVATION_DIM//2, OBSERVATION_DIM//2] = [0, 0, 0]
+        for i, piece in enumerate(self.pieces):
+            if np.array_equal(piece, next_state) and self.piecesPicked[i] == 0:
+                next_observation[OBSERVATION_DIM//2, OBSERVATION_DIM//2] = [0, 0, 0]
+                piece_picked = True
         
-        return next_state, next_observation
+        return next_state, next_observation, piece_picked
 

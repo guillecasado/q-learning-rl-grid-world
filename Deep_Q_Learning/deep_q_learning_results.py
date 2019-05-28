@@ -63,14 +63,15 @@ def deep_q_table_solution():
     env = environment.Env()  # Initializing Environment
     memory = ExperienceReplayMemory()
     agent = DeepQLearningAgent(actions=env.actions, memory=memory)  # Initializing Deep Q-Learning Agent
-    display = utils.GraphicDisplay(env)  # Initializing Graphic Display
+    display1 = utils.GraphicDisplay(env)  # Initializing Graphic Display
+    display4 = utils.GraphicDisplay(env)  # Initializing Graphic Display
 
     # Data Initialization
     episode_epsilons = []
     episode_rewards = []
+    episode_learning_rate = []
 
     # Plotting Initialization
-    plt.figure(1)
     experiment_time_steps = 1
 
     # Run N episodes
@@ -107,32 +108,36 @@ def deep_q_table_solution():
 
         if episode % N_EPISODES_PER_PLOTTING == 0:  # Plot solution each N_EPISODES_PER_PLOTTING episodes
             print(episode_time_steps)
-            plt.figure(1)
+            plt.figure(1, figsize=(5, 2))
             utils.plot_episode_solution(episode, episode_time_steps)
-            plt.figure(2)
+            plt.figure(2, figsize=(5, 2))
             utils.plot_episode_solution(episode, cumulative_reward)
 
         # Decay exploration and update Q-target network
         if episode > N_RANDOM_EPISODES and agent.epsilon > EPSILON_MIN:
             agent.decay_exploration()
+        agent.decay_learning_rate()
 
         # Save Data
         episode_epsilons.append(agent.epsilon)
         episode_rewards.append(cumulative_reward)
+        episode_learning_rate.append(agent.learning_rate)
+        np.save('mlp_weights', agent.targetModel.get_weights())
+
 
         # Update Target Q-Network
         agent.update_q_network()
 
         # Display Q-Table
-        q_table = agent.generate_q_table()
-        display.step(1, q_table)
-        np.save('q_table', q_table)
+        q_table = agent.generate_q_table([0, 0, 0])
+        display1.step(1, q_table)
+        q_table = agent.generate_q_table([1, 1, 1])
+        display4.step(1, q_table)
         #if utils.q_values_converged(q_table):
             #break
 
     # Showing results
     q_table = agent.generate_q_table()
-    display.step(1, q_table)
     plt.figure(2)
     plt.close()
     plt.figure(2)
@@ -140,8 +145,8 @@ def deep_q_table_solution():
     utils.plot_line_graphic(l_means, 'Episode cumulative reward', 'Reward')
     plt.figure(3)
     utils.plot_line_graphic(episode_epsilons, 'Episode epsilon', 'Exploration')
-
-    input()
+    plt.figure(4)
+    utils.plot_line_graphic(episode_learning_rate, 'Episode learning rate', 'Learning Rate')
 
     # Saving Variables
     np.save('q_table', q_table)
