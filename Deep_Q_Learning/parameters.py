@@ -4,8 +4,8 @@ import numpy as np
 EPSILON = 1
 EPSILON_DECAY_RATE = 0.99
 EPSILON_MIN = 0.01
-N_RANDOM_EPISODES = 200
-EPSILON_TEST = 0.1
+N_RANDOM_EPISODES = 400
+EPSILON_TEST = 0.2
 
 
 # Deep Q-Learning Algorithm Parameters
@@ -16,8 +16,8 @@ LEARNING_RATE_DECAY = 1
 LEARNING_RATE_MIN = 0.01
 
 # Experience Replay Memory Parameters
-MEMORY_SIZE = 1000
-BATCH_SIZE = 50
+MEMORY_SIZE = 10000
+BATCH_SIZE = 100
 
 MAX_EPISODES_EXPERIMENT = 1000
 MAX_TIME_STEPS_EPISODE = 1000
@@ -29,21 +29,21 @@ N_BATCH_MEANS = 20
 UPDATE_ITERATIONS = 1
 
 UNIT = 50  # pixels per unit
-GRID_HEIGHT = 5
-GRID_WIDTH = 5
+GRID_HEIGHT = 7
+GRID_WIDTH = 7
 ACTIONS = np.array([0, 1, 2, 3])  # up, down, left, right
 COORD_ACTIONS = np.array([(-1, 0), (1, 0), (0, -1), (0, 1)])  # up, down, left, right
 GOAL_STATE_REWARD = 100
 WALL_STATE_REWARD = -10
 PIECE_REWARD = 100
 TIME_STEP_REWARD = -1
-INITIAL_STATE = [2, 2]
-GOAL_STATE = [4, 4]
+INITIAL_STATE = [0, 0]
+GOAL_STATE = [6, 6]
 WALLS = np.array(
     []
 )
 PIECES = np.array(
-    [(0, 0), (4, 0), (0, 4)]
+    [(3, 3), (6, 0), (0, 6)]
 )
 
 OBSERVATION_DIM = 3

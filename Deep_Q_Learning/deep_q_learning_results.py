@@ -116,7 +116,7 @@ def deep_q_table_solution():
         # Decay exploration and update Q-target network
         if episode > N_RANDOM_EPISODES and agent.epsilon > EPSILON_MIN:
             agent.decay_exploration()
-        agent.decay_learning_rate()
+            agent.decay_learning_rate()
 
         # Save Data
         episode_epsilons.append(agent.epsilon)
@@ -130,9 +130,9 @@ def deep_q_table_solution():
 
         # Display Q-Table
         q_table = agent.generate_q_table([0, 0, 0])
-        display1.step(1, q_table)
+        display1.step(1, None, q_table)
         q_table = agent.generate_q_table([1, 1, 1])
-        display4.step(1, q_table)
+        display4.step(1, None, q_table)
         #if utils.q_values_converged(q_table):
             #break
 

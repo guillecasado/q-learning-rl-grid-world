@@ -66,10 +66,7 @@ class Env:
             reward = WALL_STATE_REWARD
 
         elif np.array_equal(next_state, self.goalState):
-            if sum(self.piecesPicked) == 0:
-                reward = -GOAL_STATE_REWARD
-            else:
-                reward = GOAL_STATE_REWARD*(sum(self.piecesPicked))
+            reward = GOAL_STATE_REWARD*(sum(self.piecesPicked))
             terminated = True
 
         elif piece_picked:

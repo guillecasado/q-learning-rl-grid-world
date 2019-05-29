@@ -8,7 +8,6 @@ from parameters import (UNIT,
                         GOAL_STATE_REWARD,
                         GRID_HEIGHT,
                         GRID_WIDTH)
-import pandas as pd
 
 
 # Grid world real-time display class
@@ -19,7 +18,7 @@ class GraphicDisplay(tk.Tk):
         self.title('Environment')
         self.geometry('{0}x{1}'.format(self.env.width * UNIT, self.env.height * UNIT))
         self.resizable(False, False)
-        self.canvas, self.agent = self.create_canvas()
+        self.canvas, self.agent, self.pieces = self.create_canvas()
         self.texts = []
         self.coordActions = COORD_ACTIONS
 
@@ -57,8 +56,20 @@ class GraphicDisplay(tk.Tk):
         goal_state = self.env.goalState * UNIT
         canvas.create_rectangle(goal_state[1], goal_state[0],
                                 goal_state[1] + UNIT, goal_state[0] + UNIT, fill='green')
+
+        # Create Pieces
+        pieces = []
+        for piece in self.env.pieces:
+            piece = piece * UNIT
+            canvas_piece = canvas.create_rectangle(piece[1] + UNIT / 3,
+                                                   piece[0] + UNIT / 3,
+                                                   piece[1] + UNIT - UNIT / 3,
+                                                   piece[0] + UNIT - UNIT / 3,
+                                                   fill='yellow')
+            pieces.append(canvas_piece)
+
         canvas.pack()
-        return canvas, agent
+        return canvas, agent, pieces
 
     def text_q_value(self, row, col, value, action, font='Helvetica', size=7, style='normal', anchor="nw"):
         if (sum([((row, col) == wall).all() for wall in self.env.walls])) == 0 \
@@ -85,7 +96,11 @@ class GraphicDisplay(tk.Tk):
                 for action in self.env.actions:
                     self.text_q_value(i, j, round(q_values_table[i, j, action], 2), action)
 
-    def step(self, action, q_table=None):
+    def step(self, action, next_state=None, q_table=None):
+        if not (next_state is None):
+            for i, piece in enumerate(self.env.pieces):
+                if next_state[0] == piece[0] and next_state[1] == piece[1]:
+                    self.canvas.delete(self.pieces[i])
         agent_move = [self.coordActions[action][1]*UNIT, self.coordActions[action][0] * UNIT]
         self.canvas.move(self.agent, agent_move[0], agent_move[1])
         if not(q_table is None):
@@ -96,12 +111,25 @@ class GraphicDisplay(tk.Tk):
 
     def reset_display(self):
         self.canvas.delete(self.agent)
+        for piece in self.pieces:
+            self.canvas.delete(piece)
         initial_state = self.env.initialState * UNIT
         self.agent = self.canvas.create_rectangle(initial_state[1] + UNIT / 3,
                                                   initial_state[0] + UNIT / 3,
                                                   initial_state[1] + UNIT - UNIT / 3,
                                                   initial_state[0] + UNIT - UNIT / 3,
                                                   fill='blue')
+        # Create Pieces
+        pieces = []
+        for piece in self.env.pieces:
+            piece = piece * UNIT
+            canvas_piece = self.canvas.create_rectangle(piece[1] + UNIT / 3,
+                                                        piece[0] + UNIT / 3,
+                                                        piece[1] + UNIT - UNIT / 3,
+                                                        piece[0] + UNIT - UNIT / 3,
+                                                        fill='yellow')
+            pieces.append(canvas_piece)
+        self.pieces = pieces
         self.canvas.tag_raise(self.agent)
         time.sleep(0.001)
         self.update()
@@ -140,12 +168,6 @@ def data_mean(data, batch_n):
     for i in range(0, len(data), batch_n):
         l_means.append(sum(data[i:i+batch_n])/batch_n)
     return l_means
-
-
-# Storing Data functions
-def create_data_frame(data=None):
-    df = pd.DataFrame()
-    return df
 
 
 # State Normalization

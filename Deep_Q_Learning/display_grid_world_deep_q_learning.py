@@ -39,7 +39,8 @@ def test():
     agent = DeepQLearningAgent(env.actions, memory)  # Initializing Q-Learning Agent
     weights = np.load('mlp_weights.npy', allow_pickle=True)
     agent.targetModel.set_weights(weights)
-
+    display1 = utils.GraphicDisplay(env)  # Initializing Graphic Display
+    """
     # Display Q-Table
     display1 = utils.GraphicDisplay(env)  # Initializing Graphic Display
     q_table = agent.generate_q_table([0, 0, 0])
@@ -53,6 +54,7 @@ def test():
     display4 = utils.GraphicDisplay(env)  # Initializing Graphic Display
     q_table = agent.generate_q_table([1, 1, 1])
     display4.step(1, q_table)
+    """
 
     # Run 1000 episodes
     for episode in range(1000):
@@ -66,7 +68,7 @@ def test():
             action = agent.get_action_test(state, observation, pieces)  # Getting current state action following e-greedy strategy
             next_state, next_observation, next_pieces, reward, terminated = env.step(state, action)
             if not (state == next_state).all():
-                display1.step(action)
+                display1.step(action, next_state)
 
             state = next_state
             observation = next_observation

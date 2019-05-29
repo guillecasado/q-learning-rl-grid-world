@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b292537-725c-47ab-9900-602fb7aefc77" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/deep_environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/deep_environment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/deep_q_learning_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/deep_q_learning_agent.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/deep_q_learning_results.py" beforeDir="false" afterPath="$PROJECT_DIR$/deep_q_learning_results.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/display_grid_world_deep_q_learning.py" beforeDir="false" afterPath="$PROJECT_DIR$/display_grid_world_deep_q_learning.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/episode_epsilons.npy" beforeDir="false" afterPath="$PROJECT_DIR$/episode_epsilons.npy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/episode_rewards.npy" beforeDir="false" afterPath="$PROJECT_DIR$/episode_rewards.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mlp_weights.npy" beforeDir="false" afterPath="$PROJECT_DIR$/mlp_weights.npy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/parameters.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/q_table.npy" beforeDir="false" afterPath="$PROJECT_DIR$/q_table.npy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
@@ -23,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parameters.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-108">
-              <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+            <state relative-caret-position="105">
+              <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -35,8 +37,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deep_environment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="83" selection-start-line="83" selection-end-line="83" />
+            <state relative-caret-position="233">
+              <caret line="68" column="12" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -44,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/deep_q_learning_agent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="190" selection-start-line="190" selection-end-line="190" />
+            <state relative-caret-position="166">
+              <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -59,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deep_q_learning_results.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="88" selection-start-line="88" selection-end-line="88" />
+            <state relative-caret-position="770">
+              <caret line="118" column="12" selection-start-line="118" selection-start-column="12" selection-end-line="118" selection-end-column="12" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -71,8 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/display_grid_world_deep_q_learning.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="291">
+              <caret line="69" selection-start-line="69" selection-end-line="69" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -83,8 +85,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="124" column="32" selection-start-line="124" selection-start-column="32" selection-end-line="124" selection-end-column="32" />
+            <state relative-caret-position="301">
+              <caret line="101" selection-start-line="101" selection-end-line="101" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -110,10 +112,11 @@
       <find>* 3</find>
       <find>new_observation</find>
       <find>in</find>
-      <find>in</find>
-      <find>10</find>
       <find>pred</find>
       <find>mlp_state</find>
+      <find>rese</find>
+      <find>10</find>
+      <find>MAX_EPISODE</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -128,10 +131,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/display_grid_world_deep_q_learning.py" />
         <option value="$PROJECT_DIR$/utils.py" />
-        <option value="$PROJECT_DIR$/deep_environment.py" />
+        <option value="$PROJECT_DIR$/display_grid_world_deep_q_learning.py" />
         <option value="$PROJECT_DIR$/deep_q_learning_results.py" />
+        <option value="$PROJECT_DIR$/deep_environment.py" />
         <option value="$PROJECT_DIR$/deep_q_learning_agent.py" />
         <option value="$PROJECT_DIR$/parameters.py" />
       </list>
@@ -308,40 +311,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="101" selection-start-line="101" selection-end-line="101" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/display_grid_world_deep_q_learning.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="291">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="124" column="32" selection-start-line="124" selection-start-column="32" selection-end-line="124" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deep_q_learning_agent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="190" selection-start-line="190" selection-end-line="190" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/deep_q_learning_results.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="88" selection-start-line="88" selection-end-line="88" />
+        <state relative-caret-position="770">
+          <caret line="118" column="12" selection-start-line="118" selection-start-column="12" selection-end-line="118" selection-end-column="12" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -350,8 +343,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/deep_environment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        <state relative-caret-position="233">
+          <caret line="68" column="12" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -360,8 +353,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/parameters.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-108">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        <state relative-caret-position="105">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deep_q_learning_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -33,7 +33,7 @@ class DeepQLearningAgent:
 
     def _build_model(self):
         model = keras.Sequential()
-        model.add(keras.layers.Dense(50,
+        model.add(keras.layers.Dense(100,
                                      input_shape=(
                                          OBSERVATION_DIM*OBSERVATION_DIM * 3 +
                                          len(PIECES) +
