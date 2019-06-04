@@ -4,7 +4,10 @@ from deep_q_learning_agent import ExperienceReplayMemory
 import utils as utils
 import numpy as np
 import time
-from parameters import UPDATE_ITERATIONS
+from parameters import (UPDATE_ITERATIONS,
+                        N_BATCH_MEANS)
+
+import matplotlib.pyplot as plt
 
 
 def main():
@@ -40,6 +43,19 @@ def test():
     weights = np.load('mlp_weights.npy', allow_pickle=True)
     agent.targetModel.set_weights(weights)
     display1 = utils.GraphicDisplay(env)  # Initializing Graphic Display
+    episode_rewards = np.load('episode_rewards.npy')
+    episode_epsilons = np.load('episode_epsilons.npy')
+
+    # Showing results
+    plt.figure(2)
+    plt.close()
+    plt.figure(2)
+    l_means = utils.data_mean(episode_rewards, N_BATCH_MEANS)
+    utils.plot_line_graphic(l_means, 'Episode cumulative reward', 'Reward')
+    plt.figure(3)
+    utils.plot_line_graphic(episode_epsilons, 'Episode epsilon', 'Exploration')
+
+
     """
     # Display Q-Table
     display1 = utils.GraphicDisplay(env)  # Initializing Graphic Display

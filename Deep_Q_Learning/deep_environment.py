@@ -50,6 +50,8 @@ class Env:
                 else:
                     self.initialObservation[i + 1, j + 1] = self.environment[INITIAL_STATE[0] + i, INITIAL_STATE[1] + i]
 
+        self.visits = np.ones([GRID_HEIGHT, GRID_WIDTH, len(self.actions)])
+
     def reset_env(self):
         self.initialState = np.array(INITIAL_STATE)
         self.goalState = np.array(GOAL_STATE)
@@ -100,6 +102,8 @@ class Env:
             if np.array_equal(piece, next_state) and self.piecesPicked[i] == 0:
                 next_observation[OBSERVATION_DIM//2, OBSERVATION_DIM//2] = [0, 0, 0]
                 piece_picked = True
-        
+
+        self.visits[state[0], state[1], action] += 1
+
         return next_state, next_observation, piece_picked
 

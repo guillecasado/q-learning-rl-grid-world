@@ -9,12 +9,15 @@ from parameters import (EPSILON,
                         DISCOUNT_FACTOR,
                         LEARNING_RATE,
                         MEMORY_SIZE,
-                        BATCH_SIZE,
+                        MEMORY_BATCH_SIZE,
                         OBSERVATION_DIM,
                         PIECES,
                         GRID_HEIGHT,
                         GRID_WIDTH,
-                        LEARNING_RATE_DECAY)
+                        LEARNING_RATE_DECAY,
+                        UCB_EXPLORATION,
+                        EPOCHS,
+                        FIT_BATCH_SIZE)
 
 import deep_environment as environment
 
@@ -32,6 +35,7 @@ class DeepQLearningAgent:
         self.memory = memory
 
     def _build_model(self):
+
         model = keras.Sequential()
         model.add(keras.layers.Dense(100,
                                      input_shape=(
@@ -115,10 +119,8 @@ class DeepQLearningAgent:
             # New Q-values
             targets[i][action] = q_update
         # Updated policy Q-Network
-        self.policyModel.fit(inputs, targets, verbose=0)
+        self.policyModel.fit(inputs, targets, epochs=EPOCHS, batch_size=FIT_BATCH_SIZE,verbose=0)
 
-        # Decay the exploration rate
-        # self.epsilon *= EPSILON_DECAY_RATE
 
     def update_q_network(self):
         self.targetModel.set_weights(self.policyModel.get_weights())
@@ -148,7 +150,30 @@ class DeepQLearningAgent:
             q_values = self.policyModel.predict(mlp_state)
             return self.arg_max(q_values[0])
 
+    def get_action_ucb(self, state, observation, pieces, visits):
+
+        ucb_values = np.zeros([len(self.actions)])
+        for i, visit in enumerate(visits[state[0], state[1]]):
+            ucb_values[i] = UCB_EXPLORATION * np.sqrt(2*(np.log(np.sum(visits[state[0], state[1]]))) / visit)
+
+        state = np.reshape(normalize(state), [1, 2])
+        observation = np.reshape(observation, [1, OBSERVATION_DIM * OBSERVATION_DIM * 3])
+        pieces = np.reshape(pieces, [1, len(PIECES)])
+
+        mlp_state = np.reshape(np.concatenate([
+            pieces[0],
+            observation[0],
+            state[0]]),
+            [1,
+             OBSERVATION_DIM * OBSERVATION_DIM * 3 +
+             len(PIECES) +
+             2])
+
+        q_values = self.policyModel.predict(mlp_state) + ucb_values
+        return self.arg_max(q_values[0])
+
     def get_action_test(self, state, observation, pieces):
+
         state = np.reshape(normalize(state), [1, 2])
         observation = np.reshape(observation, [1, OBSERVATION_DIM * OBSERVATION_DIM * 3])
         pieces = np.reshape(pieces, [1, len(PIECES)])
@@ -167,6 +192,37 @@ class DeepQLearningAgent:
             q_values = self.targetModel.predict(mlp_state)
             return self.arg_max(q_values[0])
 
+    def get_action_possible(self, state, observation, pieces):
+        possible_actions = []
+        i = OBSERVATION_DIM//2
+        j = OBSERVATION_DIM-1
+        if observation[0, i, 0] == 0:
+            possible_actions.append(0)
+        if observation[j, i, 0] == 0:
+            possible_actions.append(1)
+        if observation[i, 0, 0] == 0:
+            possible_actions.append(2)
+        if observation[i, j, 0] == 0:
+            possible_actions.append(3)
+
+        state = np.reshape(normalize(state), [1, 2])
+        observation = np.reshape(observation, [1, OBSERVATION_DIM * OBSERVATION_DIM * 3])
+        pieces = np.reshape(pieces, [1, len(PIECES)])
+
+        mlp_state = np.reshape(np.concatenate([
+            pieces[0],
+            observation[0],
+            state[0]]),
+            [1,
+             OBSERVATION_DIM * OBSERVATION_DIM * 3 +
+             len(PIECES) +
+             2])
+        if np.random.rand() <= self.epsilon:
+            return random.choice(self.actions)
+        else:
+            q_values = self.policyModel.predict(mlp_state)
+            return self.arg_max_possible(q_values[0], possible_actions)
+
     @staticmethod
     def arg_max(state_q_values):
         max_actions_list = []
@@ -180,34 +236,57 @@ class DeepQLearningAgent:
                 max_actions_list.append(i)
         return random.choice(max_actions_list)
 
+    @staticmethod
+    def arg_max_possible(state_q_values, possible_actions):
+        max_actions_list = []
+        max_q_value = state_q_values[possible_actions[0]]
+        for i, q_value in enumerate(state_q_values):
+            if q_value > max_q_value and i in possible_actions:
+                max_q_value = q_value
+                max_actions_list.clear()
+                max_actions_list.append(i)
+            elif q_value == max_q_value and i in possible_actions:
+                max_actions_list.append(i)
+        return random.choice(max_actions_list)
+
     def generate_q_table(self, pieces_picked=None):
         q_values_table = np.zeros([GRID_HEIGHT, GRID_WIDTH, 4])
+        inputs = np.zeros([GRID_HEIGHT*GRID_WIDTH,
+                           OBSERVATION_DIM * OBSERVATION_DIM * 3 +
+                           len(PIECES) +
+                           2])
+        predictions = np.zeros([GRID_HEIGHT * GRID_WIDTH * len(self.actions), len(self.actions)])
+
         env = environment.Env()
         pieces = env.piecesPicked
         if not(pieces_picked is None):
             pieces = pieces_picked
         for i in range(GRID_HEIGHT):
             for j in range(GRID_WIDTH):
-                for a in range(4):
-                    observation = np.zeros([OBSERVATION_DIM, OBSERVATION_DIM, 3])
-                    for i2 in range(-1, 2):
-                        for j2 in range(-1, 2):
-                            if i + i2 == -1 or i + i2 == GRID_HEIGHT or j + j2 == -1 or j + j2 == GRID_WIDTH:
-                                observation[i2 + 1, j2 + 1] = [1, 0, 0]
-                            else:
-                                observation[i2 + 1, j2 + 1] = env.environment[i + i2, j + j2]
-                    state = np.reshape(normalize([i, j]), [1, 2])
-                    observation = np.reshape(observation, [1, OBSERVATION_DIM * OBSERVATION_DIM * 3])
-                    pieces = np.reshape(pieces, [1, len(PIECES)])
-                    mlp_state = np.reshape(np.concatenate([
-                        pieces[0],
-                        observation[0],
-                        state[0]]),
-                        [1,
-                         OBSERVATION_DIM * OBSERVATION_DIM * 3 +
-                         len(PIECES) +
-                         2])
-                    q_values_table[i, j, a] = self.targetModel.predict(mlp_state)[0][a]
+                observation = np.zeros([OBSERVATION_DIM, OBSERVATION_DIM, 3])
+                for i2 in range(-1, 2):
+                    for j2 in range(-1, 2):
+                        if i + i2 == -1 or i + i2 == GRID_HEIGHT or j + j2 == -1 or j + j2 == GRID_WIDTH:
+                            observation[i2 + 1, j2 + 1] = [1, 0, 0]
+                        else:
+                            observation[i2 + 1, j2 + 1] = env.environment[i + i2, j + j2]
+                state = np.reshape(normalize([i, j]), [1, 2])
+                observation = np.reshape(observation, [1, OBSERVATION_DIM * OBSERVATION_DIM * 3])
+                pieces = np.reshape(pieces, [1, len(PIECES)])
+                mlp_state = np.reshape(np.concatenate([
+                    pieces[0],
+                    observation[0],
+                    state[0]]),
+                    [1,
+                     OBSERVATION_DIM * OBSERVATION_DIM * 3 +
+                     len(PIECES) +
+                     2])
+                inputs[GRID_HEIGHT * i + j] = mlp_state
+
+        predictions = self.targetModel.predict(inputs)
+        for m, prediction in enumerate(predictions):
+            for a in self.actions:
+                q_values_table[m // GRID_HEIGHT, m % GRID_WIDTH, a] = prediction[a]
         return q_values_table
 
 
@@ -215,7 +294,7 @@ class ExperienceReplayMemory:
     def __init__(self):
         self.max_size = MEMORY_SIZE
         self.memory = []
-        self.batch_size = BATCH_SIZE
+        self.batch_size = MEMORY_BATCH_SIZE
 
     def sample(self):
         return random.sample(self.memory, self.batch_size)
