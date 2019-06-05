@@ -13,7 +13,8 @@ from parameters import (N_EXPERIMENTS,
                         N_BATCH_MEANS,
                         N_RANDOM_EPISODES,
                         EPSILON_MIN,
-                        PIECES)
+                        PIECES,
+                        )
 
 
 def solution_time_steps_evolution():
@@ -74,7 +75,10 @@ def solution_time_steps_evolution():
             plt.figure(2, figsize=(5, 2))
             utils.plot_episode_solution(episode, cumulative_reward)
 
-        # Decay exploration and update Q-target network
+        # Update Target Q-Network
+        agent.update_q_network()
+
+        # Decay exploration and learning rate
         if episode > N_RANDOM_EPISODES and agent.epsilon > EPSILON_MIN:
             agent.decay_exploration()
         agent.decay_learning_rate()
@@ -87,8 +91,7 @@ def solution_time_steps_evolution():
         np.save('mlp_weights', agent.targetModel.get_weights())
 
 
-        # Update Target Q-Network
-        agent.update_q_network()
+
 
         # Display Q-Table
         q_table = agent.generate_q_table([0] * len(PIECES))
