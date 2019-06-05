@@ -121,7 +121,6 @@ class DeepQLearningAgent:
         # Updated policy Q-Network
         self.policyModel.fit(inputs, targets, epochs=EPOCHS, batch_size=FIT_BATCH_SIZE,verbose=0)
 
-
     def update_q_network(self):
         self.targetModel.set_weights(self.policyModel.get_weights())
 

@@ -2,7 +2,7 @@ import numpy as np
 
 # Epsilon-greedy Policy Evaluation Parameters
 EPSILON = 1
-EPSILON_DECAY_RATE = 0.99
+EPSILON_DECAY_RATE = 0.995
 EPSILON_MIN = 0
 N_RANDOM_EPISODES = 200
 EPSILON_TEST = 0
@@ -12,9 +12,9 @@ UCB_EXPLORATION = 200
 
 
 # Deep Q-Learning Algorithm Parameters
-DISCOUNT_FACTOR = 0.9
+DISCOUNT_FACTOR = 0.97
 
-LEARNING_RATE = 0.01
+LEARNING_RATE = 0.001
 LEARNING_RATE_DECAY = 1
 LEARNING_RATE_MIN = 0
 
@@ -24,7 +24,7 @@ MEMORY_BATCH_SIZE = 100
 EPOCHS = 1
 FIT_BATCH_SIZE = None
 
-MAX_EPISODES_EXPERIMENT = 500
+MAX_EPISODES_EXPERIMENT = 600
 MAX_TIME_STEPS_EPISODE = 1000
 N_EPISODES_PER_PLOTTING = 1
 N_EXPERIMENTS = 20
@@ -45,10 +45,10 @@ TIME_STEP_REWARD = -1
 INITIAL_STATE = [0, 0]
 GOAL_STATE = [6, 6]
 WALLS = np.array(
-    [(1, 1), (1, 2), (1, 3), (3, 4), (3, 5), (3, 6), (4, 2), (5, 2)]
+    [(0, 4), (1, 4), (2, 0), (2, 1), (2, 2), (4, 4), (4, 5), (4, 6), (4, 2), (5, 2)]
 )
 PIECES = np.array(
-    [(1, 5), (3, 1), (6, 2)]
+    [(1, 5), (3, 1), (6, 2), (3, 6)]
 )
 
 OBSERVATION_DIM = 3

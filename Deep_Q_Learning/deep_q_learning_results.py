@@ -12,7 +12,8 @@ from parameters import (N_EXPERIMENTS,
                         UPDATE_ITERATIONS,
                         N_BATCH_MEANS,
                         N_RANDOM_EPISODES,
-                        EPSILON_MIN)
+                        EPSILON_MIN,
+                        PIECES)
 
 
 def solution_time_steps_evolution():
@@ -90,9 +91,9 @@ def solution_time_steps_evolution():
         agent.update_q_network()
 
         # Display Q-Table
-        q_table = agent.generate_q_table([0, 0, 0])
+        q_table = agent.generate_q_table([0] * len(PIECES))
         display1.step(1, None, q_table)
-        q_table = agent.generate_q_table([1, 1, 1])
+        q_table = agent.generate_q_table([1] * len(PIECES))
         display4.step(1, None, q_table)
         #if utils.q_values_converged(q_table):
             #break
