@@ -45,10 +45,10 @@ class Env:
         for i in range(-1, 2):
             for j in range(-1, 2):
                 if INITIAL_STATE[0] + i == -1 or INITIAL_STATE[0] + i == self.height \
-                        or INITIAL_STATE[1] + i == -1 or INITIAL_STATE[1] + i == self.width:
+                        or INITIAL_STATE[1] + j == -1 or INITIAL_STATE[1] + j == self.width:
                     self.initialObservation[i + 1, j + 1] = [1, 0, 0]
                 else:
-                    self.initialObservation[i + 1, j + 1] = self.environment[INITIAL_STATE[0] + i, INITIAL_STATE[1] + i]
+                    self.initialObservation[i + 1, j + 1] = self.environment[INITIAL_STATE[0] + i, INITIAL_STATE[1] + j]
 
         self.visits = np.ones([GRID_HEIGHT, GRID_WIDTH, len(self.actions)])
 

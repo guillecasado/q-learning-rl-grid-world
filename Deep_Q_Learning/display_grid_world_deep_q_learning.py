@@ -47,34 +47,17 @@ def test():
     episode_epsilons = np.load('episode_epsilons.npy')
 
     # Showing results
-    plt.figure(2)
-    plt.close()
-    plt.figure(2)
-    l_means = utils.data_mean(episode_rewards, N_BATCH_MEANS)
-    utils.plot_line_graphic(l_means, 'Episode cumulative reward', 'Reward')
-    plt.figure(3)
-    utils.plot_line_graphic(episode_epsilons, 'Episode epsilon', 'Exploration')
-
-
-    """
-    # Display Q-Table
-    display1 = utils.GraphicDisplay(env)  # Initializing Graphic Display
-    q_table = agent.generate_q_table([0, 0, 0])
-    display1.step(1, q_table)
-    display2 = utils.GraphicDisplay(env)  # Initializing Graphic Display
-    q_table = agent.generate_q_table([0, 0, 1])
-    display2.step(1, q_table)
-    display3 = utils.GraphicDisplay(env)  # Initializing Graphic Display
-    q_table = agent.generate_q_table([1, 0, 1])
-    display3.step(1, q_table)
-    display4 = utils.GraphicDisplay(env)  # Initializing Graphic Display
-    q_table = agent.generate_q_table([1, 1, 1])
-    display4.step(1, q_table)
-    """
+    #plt.figure(2)
+    #l_means = utils.data_mean(episode_rewards, N_BATCH_MEANS)
+    #utils.plot_line_graphic(l_means, 'Episode cumulative reward', 'Reward')
+    #plt.figure(3)
+    #utils.plot_line_graphic(episode_epsilons, 'Episode epsilon', 'Exploration')
 
     # Run 1000 episodes
     for episode in range(1000):
         env.reset_env()  # Running a new Environment
+        #weights = np.load('mlp_weights.npy', allow_pickle=True)
+        #agent.targetModel.set_weights(weights)
         state = env.initialState
         observation = env.initialObservation
         pieces = env.piecesPicked

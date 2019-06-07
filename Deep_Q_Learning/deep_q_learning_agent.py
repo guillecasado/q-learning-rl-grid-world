@@ -21,6 +21,22 @@ from parameters import (EPSILON,
 
 import deep_environment as environment
 
+class ExperienceReplayMemory:
+    def __init__(self):
+        self.max_size = MEMORY_SIZE
+        self.memory = []
+        self.batch_size = MEMORY_BATCH_SIZE
+
+    def sample(self):
+        return random.sample(self.memory, self.batch_size)
+
+    def add_experience(self, experience_tuple):
+        self.memory.append(experience_tuple)
+        if len(self.memory) > self.max_size:
+            self.memory.pop(0)
+
+    def __len__(self):
+        return len(self.memory)
 
 class DeepQLearningAgent:
     def __init__(self, actions, memory):
@@ -37,7 +53,7 @@ class DeepQLearningAgent:
     def _build_model(self):
 
         model = keras.Sequential()
-        model.add(keras.layers.Dense(100,
+        model.add(keras.layers.Dense(50,
                                      input_shape=(
                                          OBSERVATION_DIM*OBSERVATION_DIM * 3 +
                                          len(PIECES) +
@@ -103,7 +119,7 @@ class DeepQLearningAgent:
             inputs[i] = mlp_state
 
         state_preds = self.policyModel.predict(mlp_states_array)
-        next_state_preds = self.targetModel.predict(mlp_next_states_array)
+        next_state_preds = self.policyModel.predict(mlp_next_states_array)
 
         for i, (q_values, next_q_values, sample) in enumerate(zip(state_preds, next_state_preds, mem_samples)):
 
@@ -217,7 +233,7 @@ class DeepQLearningAgent:
              len(PIECES) +
              2])
         if np.random.rand() <= self.epsilon:
-            return random.choice(self.actions)
+            return random.choice(possible_actions)
         else:
             q_values = self.policyModel.predict(mlp_state)
             return self.arg_max_possible(q_values[0], possible_actions)
@@ -254,7 +270,6 @@ class DeepQLearningAgent:
                            OBSERVATION_DIM * OBSERVATION_DIM * 3 +
                            len(PIECES) +
                            2])
-        predictions = np.zeros([GRID_HEIGHT * GRID_WIDTH * len(self.actions), len(self.actions)])
 
         env = environment.Env()
         pieces = env.piecesPicked
@@ -288,20 +303,3 @@ class DeepQLearningAgent:
                 q_values_table[m // GRID_HEIGHT, m % GRID_WIDTH, a] = prediction[a]
         return q_values_table
 
-
-class ExperienceReplayMemory:
-    def __init__(self):
-        self.max_size = MEMORY_SIZE
-        self.memory = []
-        self.batch_size = MEMORY_BATCH_SIZE
-
-    def sample(self):
-        return random.sample(self.memory, self.batch_size)
-
-    def add_experience(self, experience_tuple):
-        self.memory.append(experience_tuple)
-        if len(self.memory) > self.max_size:
-            self.memory.pop(0)
-
-    def __len__(self):
-        return len(self.memory)
