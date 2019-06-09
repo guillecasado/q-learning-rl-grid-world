@@ -38,7 +38,6 @@ def solution_time_steps_evolution():
     for episode in range(MAX_EPISODES_EXPERIMENT):
         env.reset_env()  # Running a new Environment
         state = env.initialState
-        observation = env.initialObservation
         pieces = env.piecesPicked
         visits = env.visits
         terminated = False
@@ -46,9 +45,9 @@ def solution_time_steps_evolution():
         cumulative_reward = 0
         while not terminated:
 
-            action = agent.get_action_ucb(state, observation, pieces, visits)  # Getting next action
-            next_state, next_observation, next_pieces, reward, terminated = env.step(state, action)
-            agent.memory.add_experience((state, action, observation, pieces, reward, next_state, next_observation, next_pieces, terminated))
+            action = agent.get_action(state, pieces)  # Getting next action
+            next_state, next_pieces, reward, terminated = env.step(state, action)
+            agent.memory.add_experience((state, action, pieces, reward, next_state, next_pieces, terminated))
             agent.update_q_function_experience_replay()  # Update Q-function from agent
 
             cumulative_reward += reward
@@ -59,7 +58,6 @@ def solution_time_steps_evolution():
             if episode_time_steps == MAX_TIME_STEPS_EPISODE:
                 terminated = True
             state = next_state
-            observation = next_observation
             pieces = next_pieces
             visits = env.visits
             episode_time_steps += 1

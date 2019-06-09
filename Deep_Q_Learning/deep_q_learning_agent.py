@@ -18,8 +18,8 @@ from parameters import (EPSILON,
                         UCB_EXPLORATION,
                         EPOCHS,
                         FIT_BATCH_SIZE)
-
 import deep_environment as environment
+
 
 class ExperienceReplayMemory:
     def __init__(self):
@@ -38,6 +38,7 @@ class ExperienceReplayMemory:
     def __len__(self):
         return len(self.memory)
 
+
 class DeepQLearningAgent:
     def __init__(self, actions, memory):
         self.actions = actions
@@ -55,7 +56,6 @@ class DeepQLearningAgent:
         model = keras.Sequential()
         model.add(keras.layers.Dense(50,
                                      input_shape=(
-                                         OBSERVATION_DIM*OBSERVATION_DIM * 3 +
                                          len(PIECES) +
                                          2,),
                                      activation=keras.activations.sigmoid))
@@ -67,20 +67,17 @@ class DeepQLearningAgent:
 
     def update_q_function_experience_replay(self):
 
-        if len(self.memory) < self.memory.batch_size:
+        if len(self.memory) < self.memory.max_size:
             return
 
         mlp_states_array = np.zeros([self.memory.batch_size,
-                                     OBSERVATION_DIM * OBSERVATION_DIM * 3 +
                                      len(PIECES) +
                                      2])
         mlp_next_states_array = np.zeros([self.memory.batch_size,
-                                          OBSERVATION_DIM * OBSERVATION_DIM * 3 +
                                           len(PIECES) +
                                           2])
 
         inputs = np.zeros([self.memory.batch_size,
-                           OBSERVATION_DIM * OBSERVATION_DIM * 3 +
                            len(PIECES) +
                            2])
         targets = np.zeros([self.memory.batch_size, len(self.actions)])
@@ -89,29 +86,23 @@ class DeepQLearningAgent:
 
         # Train the Q-Network by experience replay
         for i, sample in enumerate(mem_samples):
-            state, action, obs, pieces, reward, next_state, next_obs, next_pieces, terminated = sample
+            state, action, pieces, reward, next_state, next_pieces, terminated = sample
             state = np.reshape(normalize(state), [1, 2])
             pieces = np.reshape(pieces, [1, len(PIECES)])
-            observation = np.reshape(obs, [1, OBSERVATION_DIM * OBSERVATION_DIM * 3])
             next_state = np.reshape(normalize(next_state), [1, 2])
-            next_observation = np.reshape(next_obs, [1, OBSERVATION_DIM * OBSERVATION_DIM * 3])
             next_pieces = np.reshape(next_pieces, [1, len(PIECES)])
             mlp_state = np.reshape(np.concatenate([
                 pieces[0],
-                observation[0],
                 state[0]]),
                 [1,
-                 OBSERVATION_DIM * OBSERVATION_DIM * 3 +
                  len(PIECES) +
                  len(state[0])])
             mlp_states_array[i] = mlp_state
 
             mlp_next_state = np.reshape(np.concatenate([
                 next_pieces[0],
-                next_observation[0],
                 next_state[0]]),
                 [1,
-                 OBSERVATION_DIM * OBSERVATION_DIM * 3 +
                  len(PIECES) +
                  len(state[0])])
             mlp_next_states_array[i] = mlp_next_state
@@ -123,7 +114,7 @@ class DeepQLearningAgent:
 
         for i, (q_values, next_q_values, sample) in enumerate(zip(state_preds, next_state_preds, mem_samples)):
 
-            state, action, obs, pieces, reward, next_state, next_obs, next_pieces, terminated = sample
+            state, action, pieces, reward, next_state, next_pieces, terminated = sample
 
             targets[i] = q_values
 
@@ -146,17 +137,14 @@ class DeepQLearningAgent:
     def decay_learning_rate(self):
         self.learning_rate *= LEARNING_RATE_DECAY
 
-    def get_action(self, state, observation, pieces):
+    def get_action(self, state, pieces):
         state = np.reshape(normalize(state), [1, 2])
-        observation = np.reshape(observation, [1, OBSERVATION_DIM * OBSERVATION_DIM * 3])
         pieces = np.reshape(pieces, [1, len(PIECES)])
 
         mlp_state = np.reshape(np.concatenate([
             pieces[0],
-            observation[0],
             state[0]]),
             [1,
-             OBSERVATION_DIM * OBSERVATION_DIM * 3 +
              len(PIECES) +
              2])
         if np.random.rand() <= self.epsilon:
@@ -165,40 +153,34 @@ class DeepQLearningAgent:
             q_values = self.policyModel.predict(mlp_state)
             return self.arg_max(q_values[0])
 
-    def get_action_ucb(self, state, observation, pieces, visits):
+    def get_action_ucb(self, state, pieces, visits):
 
         ucb_values = np.zeros([len(self.actions)])
         for i, visit in enumerate(visits[state[0], state[1]]):
             ucb_values[i] = UCB_EXPLORATION * np.sqrt(2*(np.log(np.sum(visits[state[0], state[1]]))) / visit)
 
         state = np.reshape(normalize(state), [1, 2])
-        observation = np.reshape(observation, [1, OBSERVATION_DIM * OBSERVATION_DIM * 3])
         pieces = np.reshape(pieces, [1, len(PIECES)])
 
         mlp_state = np.reshape(np.concatenate([
             pieces[0],
-            observation[0],
             state[0]]),
             [1,
-             OBSERVATION_DIM * OBSERVATION_DIM * 3 +
              len(PIECES) +
              2])
 
         q_values = self.policyModel.predict(mlp_state) + ucb_values
         return self.arg_max(q_values[0])
 
-    def get_action_test(self, state, observation, pieces):
+    def get_action_test(self, state, pieces):
 
         state = np.reshape(normalize(state), [1, 2])
-        observation = np.reshape(observation, [1, OBSERVATION_DIM * OBSERVATION_DIM * 3])
         pieces = np.reshape(pieces, [1, len(PIECES)])
 
         mlp_state = np.reshape(np.concatenate([
             pieces[0],
-            observation[0],
             state[0]]),
             [1,
-             OBSERVATION_DIM * OBSERVATION_DIM * 3 +
              len(PIECES) +
              2])
         if np.random.rand() <= EPSILON_TEST:
@@ -206,37 +188,6 @@ class DeepQLearningAgent:
         else:
             q_values = self.targetModel.predict(mlp_state)
             return self.arg_max(q_values[0])
-
-    def get_action_possible(self, state, observation, pieces):
-        possible_actions = []
-        i = OBSERVATION_DIM//2
-        j = OBSERVATION_DIM-1
-        if observation[0, i, 0] == 0:
-            possible_actions.append(0)
-        if observation[j, i, 0] == 0:
-            possible_actions.append(1)
-        if observation[i, 0, 0] == 0:
-            possible_actions.append(2)
-        if observation[i, j, 0] == 0:
-            possible_actions.append(3)
-
-        state = np.reshape(normalize(state), [1, 2])
-        observation = np.reshape(observation, [1, OBSERVATION_DIM * OBSERVATION_DIM * 3])
-        pieces = np.reshape(pieces, [1, len(PIECES)])
-
-        mlp_state = np.reshape(np.concatenate([
-            pieces[0],
-            observation[0],
-            state[0]]),
-            [1,
-             OBSERVATION_DIM * OBSERVATION_DIM * 3 +
-             len(PIECES) +
-             2])
-        if np.random.rand() <= self.epsilon:
-            return random.choice(possible_actions)
-        else:
-            q_values = self.policyModel.predict(mlp_state)
-            return self.arg_max_possible(q_values[0], possible_actions)
 
     @staticmethod
     def arg_max(state_q_values):
@@ -267,7 +218,6 @@ class DeepQLearningAgent:
     def generate_q_table(self, pieces_picked=None):
         q_values_table = np.zeros([GRID_HEIGHT, GRID_WIDTH, 4])
         inputs = np.zeros([GRID_HEIGHT*GRID_WIDTH,
-                           OBSERVATION_DIM * OBSERVATION_DIM * 3 +
                            len(PIECES) +
                            2])
 
@@ -277,22 +227,12 @@ class DeepQLearningAgent:
             pieces = pieces_picked
         for i in range(GRID_HEIGHT):
             for j in range(GRID_WIDTH):
-                observation = np.zeros([OBSERVATION_DIM, OBSERVATION_DIM, 3])
-                for i2 in range(-1, 2):
-                    for j2 in range(-1, 2):
-                        if i + i2 == -1 or i + i2 == GRID_HEIGHT or j + j2 == -1 or j + j2 == GRID_WIDTH:
-                            observation[i2 + 1, j2 + 1] = [1, 0, 0]
-                        else:
-                            observation[i2 + 1, j2 + 1] = env.environment[i + i2, j + j2]
                 state = np.reshape(normalize([i, j]), [1, 2])
-                observation = np.reshape(observation, [1, OBSERVATION_DIM * OBSERVATION_DIM * 3])
                 pieces = np.reshape(pieces, [1, len(PIECES)])
                 mlp_state = np.reshape(np.concatenate([
                     pieces[0],
-                    observation[0],
                     state[0]]),
                     [1,
-                     OBSERVATION_DIM * OBSERVATION_DIM * 3 +
                      len(PIECES) +
                      2])
                 inputs[GRID_HEIGHT * i + j] = mlp_state

@@ -59,18 +59,16 @@ def test():
         #weights = np.load('mlp_weights.npy', allow_pickle=True)
         #agent.targetModel.set_weights(weights)
         state = env.initialState
-        observation = env.initialObservation
         pieces = env.piecesPicked
         terminated = False
         display1.reset_display()
         while not terminated:
-            action = agent.get_action_test(state, observation, pieces)  # Getting current state action following e-greedy strategy
-            next_state, next_observation, next_pieces, reward, terminated = env.step(state, action)
+            action = agent.get_action_test(state, pieces)  # Getting current state action following e-greedy strategy
+            next_state, next_pieces, reward, terminated = env.step(state, action)
             if not (state == next_state).all():
                 display1.step(action, next_state)
 
             state = next_state
-            observation = next_observation
             pieces = next_pieces
 
             time.sleep(0.1)
