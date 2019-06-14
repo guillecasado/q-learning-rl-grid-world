@@ -46,7 +46,7 @@ def solution_time_steps_evolution():
         cumulative_reward = 0
         while not terminated:
 
-            action = agent.get_action_ucb(state, observation, pieces, visits)  # Getting next action
+            action = agent.get_action(state, observation, pieces)  # Getting next action
             next_state, next_observation, next_pieces, reward, terminated = env.step(state, action)
             agent.memory.add_experience((state, action, observation, pieces, reward, next_state, next_observation, next_pieces, terminated))
             agent.update_q_function_experience_replay()  # Update Q-function from agent
@@ -79,7 +79,7 @@ def solution_time_steps_evolution():
         agent.update_q_network()
 
         # Decay exploration and learning rate
-        if episode > N_RANDOM_EPISODES and agent.epsilon > EPSILON_MIN:
+        if episode > N_RANDOM_EPISODES and agent.epsilon > EPSILON_MIN and agent.memory.max_size == len(memory):
             agent.decay_exploration()
         agent.decay_learning_rate()
 

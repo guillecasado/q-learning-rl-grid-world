@@ -47,11 +47,11 @@ def test():
     episode_epsilons = np.load('episode_epsilons.npy')
 
     # Showing results
-    #plt.figure(2)
-    #l_means = utils.data_mean(episode_rewards, N_BATCH_MEANS)
-    #utils.plot_line_graphic(l_means, 'Episode cumulative reward', 'Reward')
-    #plt.figure(3)
-    #utils.plot_line_graphic(episode_epsilons, 'Episode epsilon', 'Exploration')
+    plt.figure(2)
+    l_means = utils.data_mean(episode_rewards, N_BATCH_MEANS)
+    utils.plot_line_graphic(l_means, 'Episode cumulative reward', 'Reward')
+    plt.figure(3)
+    utils.plot_line_graphic(episode_epsilons, 'Episode epsilon', 'Exploration')
 
     # Run 1000 episodes
     for episode in range(1000):

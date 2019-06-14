@@ -24,7 +24,7 @@ class GraphicDisplay(tk.Tk):
 
     def create_canvas(self):
         # Initialize the Canvas
-        canvas = tk.Canvas(self, bg='white', highlightthickness=0.1, highlightbackground="black",
+        canvas = tk.Canvas(self, bg='white', highlightthickness=1, highlightbackground="black",
                            height=self.env.height * UNIT,
                            width=self.env.width * UNIT)
 

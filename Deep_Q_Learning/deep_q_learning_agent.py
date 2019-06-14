@@ -21,6 +21,7 @@ from parameters import (EPSILON,
 
 import deep_environment as environment
 
+
 class ExperienceReplayMemory:
     def __init__(self):
         self.max_size = MEMORY_SIZE
@@ -37,6 +38,7 @@ class ExperienceReplayMemory:
 
     def __len__(self):
         return len(self.memory)
+
 
 class DeepQLearningAgent:
     def __init__(self, actions, memory):
@@ -67,7 +69,7 @@ class DeepQLearningAgent:
 
     def update_q_function_experience_replay(self):
 
-        if len(self.memory) < self.memory.batch_size:
+        if len(self.memory) < self.memory.max_size:
             return
 
         mlp_states_array = np.zeros([self.memory.batch_size,
