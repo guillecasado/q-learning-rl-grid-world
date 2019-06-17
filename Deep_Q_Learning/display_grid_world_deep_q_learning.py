@@ -47,11 +47,11 @@ def test():
     episode_epsilons = np.load('episode_epsilons.npy')
 
     # Showing results
-    plt.figure(2)
-    l_means = utils.data_mean(episode_rewards, N_BATCH_MEANS)
-    utils.plot_line_graphic(l_means, 'Episode cumulative reward', 'Reward')
-    plt.figure(3)
-    utils.plot_line_graphic(episode_epsilons, 'Episode epsilon', 'Exploration')
+    #plt.figure(2)
+    #l_means = utils.data_mean(episode_rewards, N_BATCH_MEANS)
+    #utils.plot_line_graphic(l_means, 'Episode cumulative reward', 'Reward')
+    #plt.figure(3)
+    #utils.plot_line_graphic(episode_epsilons, 'Episode epsilon', 'Exploration')
 
     # Run 1000 episodes
     for episode in range(1000):
@@ -64,6 +64,8 @@ def test():
         terminated = False
         display1.reset_display()
         while not terminated:
+            time.sleep(30)
+
             action = agent.get_action_test(state, observation, pieces)  # Getting current state action following e-greedy strategy
             next_state, next_observation, next_pieces, reward, terminated = env.step(state, action)
             if not (state == next_state).all():
@@ -72,8 +74,6 @@ def test():
             state = next_state
             observation = next_observation
             pieces = next_pieces
-
-            time.sleep(0.1)
 
 
 if __name__ == "__main__":

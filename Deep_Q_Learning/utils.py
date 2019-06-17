@@ -16,7 +16,7 @@ class GraphicDisplay(tk.Tk):
         tk.Tk.__init__(self)
         self.env = env
         self.title('Environment')
-        self.geometry('{0}x{1}'.format(self.env.width * UNIT, self.env.height * UNIT))
+        self.geometry('{0}x{1}'.format(self.env.width * UNIT + 20, self.env.height * UNIT + 20))
         self.resizable(False, False)
         self.canvas, self.agent, self.pieces = self.create_canvas()
         self.texts = []
