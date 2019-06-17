@@ -1,4 +1,5 @@
 import time
+import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import deep_environment as environment
@@ -121,30 +122,102 @@ def solution_time_steps_evolution():
     time.sleep(1000)
 
 
-def converged_solution_time_steps_evolution(agent_class):
-    plt.ion()
+def converged_solution_time_steps_evolution():
 
     # Run N experiments
     for experiment in range(N_EXPERIMENTS):
+        # Variables Initialization
         env = environment.Env()  # Initializing Environment
-        q_learning_agent = agent_class(env.actions)  # Initializing Q-Learning Agent
-        time_steps = 0
+        memory = ExperienceReplayMemory()
+        agent = DeepQLearningAgent(actions=env.actions, memory=memory)  # Initializing Deep Q-Learning Agent
+
+        # Data Initialization
+        episode_time_steps_list = []
+        episode_epsilons = []
+        episode_rewards = []
+
+        # Plotting Initialization
+        experiment_time_steps = 1
 
         # Run N episodes
         for episode in range(MAX_EPISODES_EXPERIMENT):
             env.reset_env()  # Running a new Environment
             state = env.initialState
+            pieces = env.piecesPicked
+            visits = env.visits
             terminated = False
-            time_steps = 0
+            episode_time_steps = 0
+            cumulative_reward = 0
             while not terminated:
-                action = q_learning_agent.get_action(state)  # Getting current state action following e-greedy strategy
-                new_state, reward, terminated = env.step(state, action)
-                q_learning_agent.update_q_function(state, action, reward, new_state)  # Updating Q-function from agent
-                state = new_state
-                time_steps += 1
-        utils.plot_converged_solution(experiment, time_steps)
-    plt.show(block=True)
+
+                action = agent.get_action(state, pieces)  # Getting next action
+                next_state, next_pieces, reward, terminated = env.step(state, action)
+                agent.memory.add_experience((state, action, pieces, reward, next_state, next_pieces, terminated))
+                agent.update_q_function_experience_replay()  # Update Q-function from agent
+
+                cumulative_reward += reward
+
+                if experiment_time_steps % UPDATE_ITERATIONS == 0:
+                    agent.update_q_network()
+
+                if episode_time_steps == MAX_TIME_STEPS_EPISODE:
+                    terminated = True
+                state = next_state
+                pieces = next_pieces
+                visits = env.visits
+                episode_time_steps += 1
+                experiment_time_steps += 1
+
+                if episode_time_steps % 100 == 0:
+                    print(episode_time_steps)
+
+            if episode % N_EPISODES_PER_PLOTTING == 0:  # Plot solution each N_EPISODES_PER_PLOTTING episodes
+                print(episode_time_steps)
+                plt.figure(1, figsize=(5, 2))
+                utils.plot_episode_solution(episode, episode_time_steps)
+                plt.figure(2, figsize=(5, 2))
+                utils.plot_episode_solution(episode, cumulative_reward)
+
+            # Update Target Q-Network
+            agent.update_q_network()
+
+            # Decay exploration and learning rate
+            if episode > N_RANDOM_EPISODES and agent.epsilon > EPSILON_MIN:
+                agent.decay_exploration()
+            agent.decay_learning_rate()
+
+            # Save Data
+            episode_time_steps_list.append(episode_time_steps)
+            episode_epsilons.append(agent.epsilon)
+            episode_rewards.append(cumulative_reward)
+
+
+
+        # Saving Variables
+        l_means = utils.data_mean(episode_rewards, N_BATCH_MEANS)
+        np.save('./Results/npy/episode_time_steps', episode_time_steps_list)
+        np.save('./Results/npy/episode_rewards', episode_rewards)
+        np.save('./Results/npy/episode_rewards_mean', l_means)
+        np.save('./Results/npy/episode_epsilons', episode_epsilons)
+
+        pd.DataFrame(episode_time_steps_list).to_csv('./Results/csv/episode_time_steps_%d.csv' % experiment,
+                                                     index_label="epis",sep=';')
+        pd.DataFrame(episode_rewards).to_csv('./Results/csv/episode_rewards_%d.csv' % experiment,
+                                                     index_label="epis", sep=';')
+        pd.DataFrame(l_means).to_csv('./Results/csv/episode_rewards_mean_%d.csv' % experiment,
+                                                     index_label="epis", sep=';')
+        pd.DataFrame(episode_epsilons).to_csv('./Results/csv/episode_epsilons.csv', index_label="epis", sep=';')
+
+        # Clearing plots
+        plt.figure(1, figsize=(5, 2))
+        plt.clf()
+        plt.figure(2, figsize=(5, 2))
+        plt.clf()
+
+
+    # Waiting time
+    time.sleep(1000)
 
 
 if __name__ == "__main__":
-    solution_time_steps_evolution()
+    converged_solution_time_steps_evolution()
