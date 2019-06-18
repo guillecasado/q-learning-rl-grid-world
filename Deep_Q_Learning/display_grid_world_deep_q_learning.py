@@ -43,8 +43,8 @@ def test():
     weights = np.load('mlp_weights.npy', allow_pickle=True)
     agent.targetModel.set_weights(weights)
     display1 = utils.GraphicDisplay(env)  # Initializing Graphic Display
-    episode_rewards = np.load('./Results/npy/episode_rewards.npy')
-    episode_epsilons = np.load('./Results/npy/episode_epsilons.npy')
+    episode_rewards = np.load('./Results/episode_rewards_7x7_no_obs.npy')
+    episode_epsilons = np.load('./Results/episode_epsilons_7x7_no_obs.npy')
 
     # Showing results
     plt.figure(2)
