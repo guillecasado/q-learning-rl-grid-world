@@ -194,6 +194,8 @@ def converged_solution_time_steps_evolution():
             episode_epsilons.append(agent.epsilon)
             episode_rewards.append(cumulative_reward)
 
+            
+
         # Saving Variables
         l_means = utils.data_mean(episode_rewards, N_BATCH_MEANS)
         np.save('./Results/npy/episode_time_steps_%d' % experiment, episode_time_steps_list)
