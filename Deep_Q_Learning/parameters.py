@@ -35,8 +35,8 @@ N_BATCH_MEANS = 20
 UPDATE_ITERATIONS = 1
 
 UNIT = 50  # pixels per unit
-GRID_HEIGHT = 7
-GRID_WIDTH = 7
+GRID_HEIGHT = 5
+GRID_WIDTH = 5
 ACTIONS = np.array([0, 1, 2, 3])  # up, down, left, right
 COORD_ACTIONS = np.array([(-1, 0), (1, 0), (0, -1), (0, 1)])  # up, down, left, right
 GOAL_STATE_REWARD = 100
@@ -44,13 +44,15 @@ WALL_STATE_REWARD = -1
 PIECE_REWARD = 100
 TIME_STEP_REWARD = -1
 INITIAL_STATE = [0, 0]
-GOAL_STATE = [6, 6]
+GOAL_STATE = [4, 4]
+
 WALLS = np.array(
-    [(0, 4), (1, 4), (2, 0), (2, 1), (2, 2), (4, 4), (4, 5), (4, 6), (4, 2), (5, 2)]
+    [(0, 1), (1, 1), (2, 3), (3, 0), (3, 1)]
 )
 
+
 PIECES = np.array(
-    [(6, 2), (3, 6)]
+    [(2, 4)]
 )
 
 OBSERVATION_DIM = 3

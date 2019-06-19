@@ -3,12 +3,69 @@
   <component name="ChangeListManager">
     <list default="true" id="2b292537-725c-47ab-9900-602fb7aefc77" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/npy/episode_epsilons.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_epsilons.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/deep_q_learning_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/deep_q_learning_agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deep_q_learning_results.py" beforeDir="false" afterPath="$PROJECT_DIR$/deep_q_learning_results.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_mean.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_mean.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/csv/episode_time_steps.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_time_steps.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_0.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_0.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_1.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_1.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_10.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_10.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_11.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_11.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_12.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_12.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_13.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_13.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_14.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_14.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_15.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_15.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_16.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_16.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_17.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_17.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_18.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_18.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_19.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_19.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_2.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_2.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_3.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_3.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_4.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_4.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_5.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_5.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_6.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_6.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_7.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_7.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_8.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_8.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_9.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_9.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_0.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_0.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_1.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_1.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_10.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_10.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_11.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_11.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_12.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_12.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_13.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_13.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_14.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_14.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_15.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_15.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_16.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_16.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_17.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_17.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_18.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_18.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_19.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_19.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_2.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_2.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_3.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_3.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_4.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_4.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_5.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_5.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_6.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_6.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_7.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_7.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_8.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_8.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_9.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean_9.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps_0.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps_0.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps_1.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps_1.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps_10.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps_10.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps_11.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps_11.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps_12.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps_12.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps_13.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps_13.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps_14.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps_14.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps_15.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps_15.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps_16.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps_16.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps_17.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps_17.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps_18.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps_18.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps_19.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps_19.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps_2.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps_2.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps_3.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps_3.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps_4.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps_4.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps_5.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps_5.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps_6.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps_6.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps_7.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps_7.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps_8.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps_8.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps_9.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps_9.npy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/parameters.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,8 +82,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parameters.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="694">
-              <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+            <state relative-caret-position="440">
+              <caret line="55" column="1" lean-forward="true" selection-start-line="48" selection-end-line="55" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -34,8 +91,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deep_environment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="72" selection-start-line="72" selection-end-line="72" />
+            <state relative-caret-position="165">
+              <caret line="11" column="29" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/deep_q_learning_agent.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="870">
+              <caret line="58" column="39" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -44,19 +110,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/deep_q_learning_agent.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1694">
-              <caret line="20" column="45" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deep_q_learning_results.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1245">
-              <caret line="83" column="23" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
+            <state relative-caret-position="236">
+              <caret line="160" column="40" selection-start-line="160" selection-start-column="40" selection-end-line="160" selection-end-column="40" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -67,8 +124,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/display_grid_world_deep_q_learning.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="815">
-              <caret line="77" selection-start-line="77" selection-end-line="77" />
+            <state relative-caret-position="275">
+              <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -323,8 +380,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/display_grid_world_deep_q_learning.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="815">
-          <caret line="77" selection-start-line="77" selection-end-line="77" />
+        <state relative-caret-position="275">
+          <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
@@ -333,25 +390,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/deep_q_learning_agent.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1694">
-          <caret line="20" column="45" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deep_environment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="72" selection-start-line="72" selection-end-line="72" />
+        <state relative-caret-position="870">
+          <caret line="58" column="39" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/deep_environment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/deep_q_learning_results.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1245">
-          <caret line="83" column="23" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
+        <state relative-caret-position="236">
+          <caret line="160" column="40" selection-start-line="160" selection-start-column="40" selection-end-line="160" selection-end-column="40" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -360,8 +417,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/parameters.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="694">
-          <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+        <state relative-caret-position="440">
+          <caret line="55" column="1" lean-forward="true" selection-start-line="48" selection-end-line="55" selection-end-column="1" />
         </state>
       </provider>
     </entry>
