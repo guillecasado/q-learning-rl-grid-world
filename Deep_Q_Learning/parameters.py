@@ -3,8 +3,8 @@ import numpy as np
 # Epsilon-greedy Policy Evaluation Parameters
 EPSILON = 1
 EPSILON_DECAY_RATE = 0.995
-EPSILON_MIN = 0.2
-N_RANDOM_EPISODES = 50
+EPSILON_MIN = 0.1
+N_RANDOM_EPISODES = 0
 EPSILON_TEST = 0.1
 
 #UCB Policy Evaluation Parameters:
@@ -12,9 +12,9 @@ UCB_EXPLORATION = 400
 
 
 # Deep Q-Learning Algorithm Parameters
-DISCOUNT_FACTOR = 0.95
+DISCOUNT_FACTOR = 0.98
 
-LEARNING_RATE = 0.005
+LEARNING_RATE = 0.01
 LEARNING_RATE_DECAY = 1
 LEARNING_RATE_MIN = 0
 
@@ -24,7 +24,7 @@ MEMORY_BATCH_SIZE = 100
 EPOCHS = 1
 FIT_BATCH_SIZE = None
 
-MAX_EPISODES_EXPERIMENT = 1000
+MAX_EPISODES_EXPERIMENT = 700
 MAX_TIME_STEPS_EPISODE = 1000
 N_EPISODES_PER_PLOTTING = 1
 N_EXPERIMENTS = 20
@@ -34,8 +34,8 @@ N_BATCH_MEANS = 20
 UPDATE_ITERATIONS = 1
 
 UNIT = 50  # pixels per unit
-GRID_HEIGHT = 7
-GRID_WIDTH = 7
+GRID_HEIGHT = 5
+GRID_WIDTH = 5
 ACTIONS = np.array([0, 1, 2, 3])  # up, down, left, right
 COORD_ACTIONS = np.array([(-1, 0), (1, 0), (0, -1), (0, 1)])  # up, down, left, right
 GOAL_STATE_REWARD = 100
@@ -43,13 +43,13 @@ WALL_STATE_REWARD = -1
 PIECE_REWARD = 100
 TIME_STEP_REWARD = -1
 INITIAL_STATE = [0, 0]
-GOAL_STATE = [6, 6]
+GOAL_STATE = [4, 4]
 WALLS = np.array(
-    [(0, 4), (1, 4), (2, 0), (2, 1), (2, 2), (4, 4), (4, 5), (4, 6), (4, 2), (5, 2)]
+    [(0, 1), (1, 1), (2, 3), (3, 0), (3, 1)]
 )
 
 PIECES = np.array(
-    [(6, 2), (3, 6)]
+    [(2, 4), (4, 1)]
 )
 
 OBSERVATION_DIM = 1
@@ -60,8 +60,20 @@ OBSERVATION_DIM = 1
 #      (6, 8), (6, 9), (7, 2), (7, 3), (7, 4), (7, 5), (9, 3), (7, 6)]
 # )
 
+#WALLS5 = np.array(
+#    [(0, 1), (1, 1), (2, 3), (3, 0), (3, 1)]
+#)
+
+#PIECES5 = np.array(
+#    [(1,2), (2, 4), (4, 1)]
+#)
+
 # WALLS7 = np.array(
 #     [(0, 4), (1, 4), (2, 0), (2, 1), (2, 2), (4, 4), (4, 5), (4, 6), (4, 2), (5, 2)]
+# )
+
+# PIECES7 = np.array(
+#     [(1, 5), (3, 1), (6, 2), (3, 6)]
 # )
 
 # WALLS10 = np.array(
@@ -73,10 +85,8 @@ OBSERVATION_DIM = 1
 #    [(0, 5), (1, 5), (2, 0), (2, 1), (2, 2), (3, 8), (3, 9), (5, 4), (5, 5), (5, 6), (5, 7), (7, 2), (7, 3)]
 #)
 
-# PIECES7 = np.array(
-#     [(1, 5), (3, 1), (6, 2), (3, 6)]
-# )
 
 #PIECES10 = np.array(
 #    [(1, 6), (4, 4), (6, 0), (9, 2)]
 #)
+
