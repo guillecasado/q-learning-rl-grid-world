@@ -126,6 +126,10 @@ def solution_time_steps_evolution():
 
 def converged_solution_time_steps_evolution():
 
+    time_steps_df = pd.DataFrame()
+    rewards_df = pd.DataFrame()
+    mean_rewards_df = pd.DataFrame()
+
     # Run N experiments
     for experiment in range(N_EXPERIMENTS):
         # Variables Initialization
@@ -201,18 +205,28 @@ def converged_solution_time_steps_evolution():
 
         # Saving Variables
         l_means = utils.data_mean(episode_rewards, N_BATCH_MEANS)
-        np.save('./Results/npy/episode_time_steps', episode_time_steps_list)
-        np.save('./Results/npy/episode_rewards', episode_rewards)
-        np.save('./Results/npy/episode_rewards_mean', l_means)
+        np.save('./Results/npy/episode_time_steps_%d' % experiment, episode_time_steps_list)
+        np.save('./Results/npy/episode_rewards_%d' % experiment, episode_rewards)
+        np.save('./Results/npy/episode_rewards_mean_%d' % experiment, l_means)
         np.save('./Results/npy/episode_epsilons', episode_epsilons)
 
-        pd.DataFrame(episode_time_steps_list).to_csv('./Results/csv/episode_time_steps_%d.csv' % experiment,
-                                                     index_label="epis",sep=';')
-        pd.DataFrame(episode_rewards).to_csv('./Results/csv/episode_rewards_%d.csv' % experiment,
-                                                     index_label="epis", sep=';')
-        pd.DataFrame(l_means).to_csv('./Results/csv/episode_rewards_mean_%d.csv' % experiment,
-                                                     index_label="epis", sep=';')
-        pd.DataFrame(episode_epsilons).to_csv('./Results/csv/episode_epsilons.csv', index_label="epis", sep=';')
+        # Appending Data
+        time_steps_series = pd.Series(episode_time_steps_list)
+        rewards_series = pd.Series(episode_rewards)
+        mean_rewards_series = pd.Series(l_means)
+        time_steps_df = time_steps_df.append(time_steps_series, ignore_index=True)
+        rewards_df = rewards_df.append(rewards_series, ignore_index=True)
+        mean_rewards_df = mean_rewards_df.append(mean_rewards_series, ignore_index=True)
+
+        # Exporting CSV
+        pd.DataFrame(time_steps_df).to_csv('./Results/csv/episode_time_steps.csv',
+                                           index_label="Episode", sep=';')
+        pd.DataFrame(rewards_df).to_csv('./Results/csv/episode_rewards.csv',
+                                        index_label="Episode", sep=';')
+        pd.DataFrame(mean_rewards_df).to_csv('./Results/csv/episode_rewards_mean.csv',
+                                             index_label="Episode", sep=';')
+        pd.DataFrame(episode_epsilons).to_csv('./Results/csv/episode_epsilons.csv', index_label="Episode", sep=';')
+
 
         # Clearing plots
         plt.figure(1, figsize=(5, 2))
@@ -220,6 +234,14 @@ def converged_solution_time_steps_evolution():
         plt.figure(2, figsize=(5, 2))
         plt.clf()
 
+    # Exporting CSV
+    pd.DataFrame(time_steps_df).to_csv('./Results/csv/episode_time_steps.csv',
+                                                    index_label="Episode", sep=';')
+    pd.DataFrame(rewards_df).to_csv('./Results/csv/episode_rewards.csv',
+                                            index_label="Episode", sep=';')
+    pd.DataFrame(mean_rewards_df).to_csv('./Results/csv/episode_rewards_mean.csv',
+                                    index_label="Episode", sep=';')
+    pd.DataFrame(episode_epsilons).to_csv('./Results/csv/episode_epsilons.csv', index_label="Episode", sep=';')
 
     # Waiting time
     time.sleep(1000)

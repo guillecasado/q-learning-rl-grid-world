@@ -17,7 +17,8 @@ from parameters import (EPSILON,
                         LEARNING_RATE_DECAY,
                         UCB_EXPLORATION,
                         EPOCHS,
-                        FIT_BATCH_SIZE)
+                        FIT_BATCH_SIZE,
+                        EPSILON_DECREASE_RATE)
 
 import deep_environment as environment
 
@@ -144,6 +145,9 @@ class DeepQLearningAgent:
 
     def decay_exploration(self):
         self.epsilon *= EPSILON_DECAY_RATE
+
+    def decrease_exploration(self):
+        self.epsilon -= EPSILON_DECREASE_RATE
 
     def decay_learning_rate(self):
         self.learning_rate *= LEARNING_RATE_DECAY

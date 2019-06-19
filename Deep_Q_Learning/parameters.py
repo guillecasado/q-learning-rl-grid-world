@@ -3,8 +3,9 @@ import numpy as np
 # Epsilon-greedy Policy Evaluation Parameters
 EPSILON = 1
 EPSILON_DECAY_RATE = 0.995
+EPSILON_DECREASE_RATE = 0.0025
 EPSILON_MIN = 0.2
-N_RANDOM_EPISODES = 0
+N_RANDOM_EPISODES = 50
 EPSILON_TEST = 0.2
 
 #UCB Policy Evaluation Parameters:
@@ -25,10 +26,10 @@ EPOCHS = 1
 FIT_BATCH_SIZE = None
 
 MAX_EPISODES_EXPERIMENT = 600
-MAX_TIME_STEPS_EPISODE = 500
+MAX_TIME_STEPS_EPISODE = 1000
 N_EPISODES_PER_PLOTTING = 1
-N_EXPERIMENTS = 10
-N_BATCH_MEANS = 10
+N_EXPERIMENTS = 20
+N_BATCH_MEANS = 20
 
 # Fixed Q-Network Strategy parameters
 UPDATE_ITERATIONS = 1
@@ -39,7 +40,7 @@ GRID_WIDTH = 7
 ACTIONS = np.array([0, 1, 2, 3])  # up, down, left, right
 COORD_ACTIONS = np.array([(-1, 0), (1, 0), (0, -1), (0, 1)])  # up, down, left, right
 GOAL_STATE_REWARD = 100
-WALL_STATE_REWARD = -10
+WALL_STATE_REWARD = -1
 PIECE_REWARD = 100
 TIME_STEP_REWARD = -1
 INITIAL_STATE = [0, 0]
@@ -49,7 +50,7 @@ WALLS = np.array(
 )
 
 PIECES = np.array(
-    [(1, 5), (3, 1), (6, 2), (3, 6)]
+    [(6, 2), (3, 6)]
 )
 
 OBSERVATION_DIM = 3

@@ -3,17 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="2b292537-725c-47ab-9900-602fb7aefc77" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deep_environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/deep_environment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_epsilons.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_epsilons.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps.npy" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/deep_q_learning_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/deep_q_learning_agent.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/deep_q_learning_results.py" beforeDir="false" afterPath="$PROJECT_DIR$/deep_q_learning_results.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/display_grid_world_deep_q_learning.py" beforeDir="false" afterPath="$PROJECT_DIR$/display_grid_world_deep_q_learning.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/episode_epsilons.npy" beforeDir="false" afterPath="$PROJECT_DIR$/episode_epsilons.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/episode_rewards.npy" beforeDir="false" afterPath="$PROJECT_DIR$/episode_rewards.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/episode_time_steps.npy" beforeDir="false" afterPath="$PROJECT_DIR$/episode_time_steps.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mlp_weights.npy" beforeDir="false" afterPath="$PROJECT_DIR$/mlp_weights.npy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/parameters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/q_table.npy" beforeDir="false" afterPath="$PROJECT_DIR$/q_table.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,8 +25,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parameters.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+            <state relative-caret-position="694">
+              <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -38,8 +34,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deep_environment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="925">
-              <caret line="67" column="20" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
+            <state relative-caret-position="248">
+              <caret line="72" selection-start-line="72" selection-end-line="72" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -50,11 +46,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deep_q_learning_agent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="70" selection-start-line="70" selection-end-line="70" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1694">
+              <caret line="20" column="45" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -62,8 +55,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deep_q_learning_results.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="580">
-              <caret line="227" column="26" selection-start-line="227" selection-start-column="26" selection-end-line="227" selection-end-column="26" />
+            <state relative-caret-position="1245">
+              <caret line="83" column="23" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -74,7 +67,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/display_grid_world_deep_q_learning.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
+            <state relative-caret-position="815">
               <caret line="77" selection-start-line="77" selection-end-line="77" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
@@ -86,7 +79,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
+            <state relative-caret-position="-768">
               <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -135,11 +128,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/deep_q_learning_agent.py" />
         <option value="$PROJECT_DIR$/deep_environment.py" />
-        <option value="$PROJECT_DIR$/deep_q_learning_results.py" />
         <option value="$PROJECT_DIR$/utils.py" />
         <option value="$PROJECT_DIR$/display_grid_world_deep_q_learning.py" />
+        <option value="$PROJECT_DIR$/deep_q_learning_agent.py" />
+        <option value="$PROJECT_DIR$/deep_q_learning_results.py" />
         <option value="$PROJECT_DIR$/parameters.py" />
       </list>
     </option>
@@ -318,39 +311,9 @@
     <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/tensorflow/keras/initializers/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/deep_environment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="925">
-          <caret line="67" column="20" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deep_q_learning_agent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="70" selection-start-line="70" selection-end-line="70" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deep_q_learning_results.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="227" column="26" selection-start-line="227" selection-start-column="26" selection-end-line="227" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
+        <state relative-caret-position="-768">
           <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -360,7 +323,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/display_grid_world_deep_q_learning.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
+        <state relative-caret-position="815">
           <caret line="77" selection-start-line="77" selection-end-line="77" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
@@ -368,10 +331,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/deep_q_learning_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1694">
+          <caret line="20" column="45" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deep_environment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="72" selection-start-line="72" selection-end-line="72" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deep_q_learning_results.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1245">
+          <caret line="83" column="23" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/parameters.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+        <state relative-caret-position="694">
+          <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
         </state>
       </provider>
     </entry>
