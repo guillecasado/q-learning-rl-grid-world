@@ -3,42 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2b292537-725c-47ab-9900-602fb7aefc77" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_epsilons.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_epsilons.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_0.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_2.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_3.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_4.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_5.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_6.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_7.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_8.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_8.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_9.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_9.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_mean_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_mean_0.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_mean_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_mean_1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_mean_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_mean_2.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_mean_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_mean_3.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_mean_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_mean_4.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_mean_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_mean_5.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_mean_6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_mean_6.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_mean_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_mean_7.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_mean_8.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_mean_8.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_rewards_mean_9.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_rewards_mean_9.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_time_steps_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_time_steps_0.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_time_steps_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_time_steps_1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_time_steps_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_time_steps_2.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_time_steps_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_time_steps_3.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_time_steps_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_time_steps_4.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_time_steps_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_time_steps_5.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_time_steps_6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_time_steps_6.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_time_steps_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_time_steps_7.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_time_steps_8.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_time_steps_8.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/csv/episode_time_steps_9.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/csv/episode_time_steps_9.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/npy/episode_epsilons.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_epsilons.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/npy/episode_rewards_mean.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_rewards_mean.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/npy/episode_time_steps.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Results/npy/episode_time_steps.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/display_grid_world_deep_q_learning.py" beforeDir="false" afterPath="$PROJECT_DIR$/display_grid_world_deep_q_learning.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deep_q_learning_results.py" beforeDir="false" afterPath="$PROJECT_DIR$/deep_q_learning_results.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/parameters.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parameters.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+            <state relative-caret-position="390">
+              <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -64,11 +29,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deep_environment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="790">
-              <caret line="58" column="20" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="161">
+              <caret line="11" column="29" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -76,20 +38,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deep_q_learning_agent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-511">
-              <caret line="68" selection-start-line="68" selection-end-line="68" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-742">
+              <caret line="12" column="29" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deep_q_learning_results.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="222" column="45" selection-start-line="222" selection-start-column="45" selection-end-line="222" selection-end-column="45" />
+            <state relative-caret-position="161">
+              <caret line="155" column="40" selection-start-line="155" selection-start-column="40" selection-end-line="155" selection-end-column="40" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -100,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/display_grid_world_deep_q_learning.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="46" column="58" selection-start-line="46" selection-start-column="58" selection-end-line="46" selection-end-column="58" />
+            <state relative-caret-position="815">
+              <caret line="75" selection-start-line="75" selection-end-line="75" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -112,7 +71,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
+            <state relative-caret-position="-768">
               <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -126,7 +85,6 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>np.conca</find>
-      <find>obser</find>
       <find>OBSERVATION_DIM*OBSERVATION_DIM</find>
       <find>mlp</find>
       <find>N_EPISODES</find>
@@ -146,6 +104,7 @@
       <find>10</find>
       <find>target</find>
       <find>obs</find>
+      <find>obser</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -163,8 +122,8 @@
         <option value="$PROJECT_DIR$/utils.py" />
         <option value="$PROJECT_DIR$/deep_environment.py" />
         <option value="$PROJECT_DIR$/deep_q_learning_agent.py" />
-        <option value="$PROJECT_DIR$/deep_q_learning_results.py" />
         <option value="$PROJECT_DIR$/display_grid_world_deep_q_learning.py" />
+        <option value="$PROJECT_DIR$/deep_q_learning_results.py" />
         <option value="$PROJECT_DIR$/parameters.py" />
       </list>
     </option>
@@ -218,7 +177,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.display_grid_world_deep_q_learning">
+  <component name="RunManager" selected="Python.deep_q_learning_results">
     <configuration name="deep_q_learning_results" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Deep_Q_Learning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -263,8 +222,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.display_grid_world_deep_q_learning" />
         <item itemvalue="Python.deep_q_learning_results" />
+        <item itemvalue="Python.display_grid_world_deep_q_learning" />
       </list>
     </recent_temporary>
   </component>
@@ -345,28 +304,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
+        <state relative-caret-position="-768">
           <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deep_environment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="790">
-          <caret line="58" column="20" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deep_q_learning_agent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-511">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -375,28 +314,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/display_grid_world_deep_q_learning.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="46" column="58" selection-start-line="46" selection-start-column="58" selection-end-line="46" selection-end-column="58" />
+        <state relative-caret-position="815">
+          <caret line="75" selection-start-line="75" selection-end-line="75" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parameters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/deep_q_learning_results.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="222" column="45" selection-start-line="222" selection-start-column="45" selection-end-line="222" selection-end-column="45" />
+        <state relative-caret-position="161">
+          <caret line="155" column="40" selection-start-line="155" selection-start-column="40" selection-end-line="155" selection-end-column="40" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deep_environment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deep_q_learning_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-742">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parameters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
         </state>
       </provider>
     </entry>
