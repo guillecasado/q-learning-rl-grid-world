@@ -40,8 +40,8 @@ def test():
     env = deep_environment.Env()  # Initializing Environment
     memory = ExperienceReplayMemory()
     agent = DeepQLearningAgent(env.actions, memory)  # Initializing Q-Learning Agent
-    weights = np.load('mlp_weights.npy', allow_pickle=True)
-    agent.targetModel.set_weights(weights)
+    #weights = np.load('mlp_weights.npy', allow_pickle=True)
+    #agent.targetModel.set_weights(weights)
     display1 = utils.GraphicDisplay(env)  # Initializing Graphic Display
     episode_rewards = np.load('episode_rewards.npy')
     episode_epsilons = np.load('episode_epsilons.npy')

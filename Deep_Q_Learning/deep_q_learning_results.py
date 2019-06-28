@@ -137,6 +137,9 @@ def converged_solution_time_steps_evolution():
         memory = ExperienceReplayMemory()
         agent = DeepQLearningAgent(actions=env.actions, memory=memory)  # Initializing Deep Q-Learning Agent
 
+        display1 = utils.GraphicDisplay(env)  # Initializing Graphic Display
+        display4 = utils.GraphicDisplay(env)  # Initializing Graphic Display
+
         # Data Initialization
         episode_time_steps_list = []
         episode_epsilons = []
@@ -201,7 +204,11 @@ def converged_solution_time_steps_evolution():
             episode_epsilons.append(agent.epsilon)
             episode_rewards.append(cumulative_reward)
 
-
+            # Display Q-Table
+            q_table = agent.generate_q_table([0] * len(PIECES))
+            display1.step(1, None, q_table)
+            q_table = agent.generate_q_table([1] * len(PIECES))
+            display4.step(1, None, q_table)
 
         # Saving Variables
         l_means = utils.data_mean(episode_rewards, N_BATCH_MEANS)
